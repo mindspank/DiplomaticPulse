@@ -104,7 +104,7 @@ function ContentTable(fieldlist, element) {
     var $row = $('<div class="item" />');
     var type = d[0].qText == 'Web' ? 'fa-cloud' : 'fa-twitter';
 
-    $('<div class="info"><i class="fa '+ type + '"></i>' + spacer + d[5].qText + spacer + d[4].qText + '</div>').appendTo($row);
+    $('<div class="info"><i class="fa '+ type + '"></i>' + spacer + d[4].qText + spacer + d[5].qText.substring(0,16) + '</div>').appendTo($row);
     $('<div class="body">' + d[2].qText + '</div>').appendTo($row);
 
     return $row;

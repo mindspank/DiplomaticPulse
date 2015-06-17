@@ -497,23 +497,48 @@ body {
   -webkit-flex-wrap: wrap !important;
       -ms-flex-wrap: wrap !important;
           flex-wrap: wrap !important;
-  padding: 40px;
+  padding: 0 40px;
 }
 #main.export .titlesection {
   -webkit-flex: 1 1 100%;
       -ms-flex: 1 1 100%;
           flex: 1 1 100%;
+  padding-right: 20px;
+}
+#main.export .titlesection h3 {
+  float: left;
+}
+#main.export .titlesection p {
+  clear: both;
+}
+#main.export .titlesection button {
+  float: right;
+  margin-top: 20px;
 }
 #main.export .exportarea {
   -webkit-flex: 1 1 100%;
       -ms-flex: 1 1 100%;
           flex: 1 1 100%;
+  margin-top: 40px;
+}
+#main.export .exportarea table {
+  font-size: 13px;
 }
 #main.export .exportarea table tbody td {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   max-width: 120px;
+}
+#main.export .popover {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 20;
 }
 @media only screen and (min-width: 676px) and (max-width: 1000px) {
   #diplomaticpulse-container #main {
@@ -549,6 +574,9 @@ body {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
+    -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
   #content .table-tweets {
     -webkit-flex: 1 1 100%;

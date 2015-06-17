@@ -4,10 +4,7 @@ function Export(fieldlist) {
 	var cube;
 	var $tbody = $('#exporttable tbody');
 	var $thead = $('#exporttable thead');
-	
-	$tbody.empty();
-	$thead.empty();
-	
+		
 	var dimensionList = fieldlist.map(function(d) {
 		return {
 			"qNullSuppression": true,
@@ -42,7 +39,8 @@ function Export(fieldlist) {
 	
 	function render() {
 		cube.getLayout().then(function(layout) {
-			console.log(layout);
+			$tbody.empty();
+			$thead.empty();		
 			
 			$('.exportarea').first('<p>Showing the first ' + ' rows out of ' + ' available rows.')
 			
@@ -74,10 +72,11 @@ function Export(fieldlist) {
 		var filename = 'DPExport_' + new Date(Date.now()).toISOString().substring(0,16);
 		
 		cube.exportData('CSV_C', '/qHyperCubeDef', filename).then(function(reply) {
-			$('<a href="#" download="https://' + QIX.config.host + reply + '" id="btnExport" >Export data into Excel</a>').appendTo($('.exportarea'));
+			window.open('https://' + QIX.config.host + reply, '_blank');
 		});
 			
 	};
+	
 	
 	var doExport = pubsub.subscribe('export', exportData);
 	var update = pubsub.subscribe('update', render);
