@@ -9,7 +9,7 @@ var livereload = require('gulp-livereload');
 var plumber = require('gulp-plumber');
 var lazypipe = require('lazypipe');
 var connect = require('gulp-connect');
-var autoprefix = require('gulp-autoprefix');
+var autoprefix = require('gulp-autoprefixer');
 
 var paths = {
     base: 'app',

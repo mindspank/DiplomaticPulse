@@ -36,13 +36,6 @@
 :-ms-input-placeholder {
   color: #ccc;
 }
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background: #b3b3b3;
-}
 /*  D3 Tip  */
 .d3-tip {
   font-size: 14px;
