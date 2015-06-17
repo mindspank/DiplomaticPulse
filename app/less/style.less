@@ -34,36 +34,6 @@ body {
   }
 }
 
-#SPLASH() {
-  #splash {
-
-    height: 600px;
-    display: none;
-    width: ~"calc(100% - 200px)";
-    position: absolute;
-    z-index: 1000;
-    text-align: center;
-
-    background-color: rgba(255,255,255,0.97);
-
-    border-bottom: rgba(0,0,0,0.2) 1px solid;
-    padding: 0 20px;
-
-    h1 {
-      font-size: 56px;
-      margin-top: 40px;
-    }
-
-    iframe {
-      margin-top: 80px;
-    }
-
-  }
-}
-
-#SPLASH();
-
-
 #TOP-CONTROLS() {
   #top-controls {
     padding: 0;
@@ -136,13 +106,14 @@ body {
 
     .section-right {
       flex: 2;
-
+      
       .part {
         display: inline-block;
+        background-color: #fff;
         width: 100%;
-        padding: 0 20px;
+        padding: 0 20px 20px 20px;
         min-height: 350px;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
 
         .part-of-part {
           width: 100%;
@@ -230,15 +201,17 @@ body {
 
   #diplomaticpulse-container #main {
     flex-wrap: wrap;
-    align-items: flex-start;
   }
 
   #content .table-tweets {
     flex: 1 1 100%;
+    margin-right: 10px;
+    background-color: #fff;
   }
 
   #content .section-right {
     flex: 1 1 100%;
+    background-color: #fff;
   }
 
   #content .table-tweets .rows .item {
@@ -255,28 +228,6 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #b3b3b3;
 }
-
-p.section-title {
-  line-height: 40px;
-  height: 40px;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  margin: 0;
-  text-transform: uppercase;
-  border-bottom: #00aeef solid 3px;
-}
-
-
-
-
-
-
-
-
-
-
-
 
 .chart-mentions-table table, #tweettable table {
   border-collapse: separate;

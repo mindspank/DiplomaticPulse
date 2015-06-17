@@ -76,6 +76,23 @@
   top: 100%;
   left: 0;
 }
+
+/* Section Titles */
+p.section-title {
+  line-height: 40px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  margin: 0;
+  text-transform: uppercase;
+  border-bottom: #00aeef solid 3px;
+}
+
+.bordered {
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+}
 body {
   font-family: Roboto, sans-serif;
   background-color: #FFF;
@@ -88,24 +105,6 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-#splash {
-  height: 600px;
-  display: none;
-  width: calc(100% - 200px);
-  position: absolute;
-  z-index: 1000;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.97);
-  border-bottom: rgba(0, 0, 0, 0.2) 1px solid;
-  padding: 0 20px;
-}
-#splash h1 {
-  font-size: 56px;
-  margin-top: 40px;
-}
-#splash iframe {
-  margin-top: 80px;
 }
 #content {
   border-top: 1px solid #eee;
@@ -149,10 +148,11 @@ body {
 }
 #content .section-right .part {
   display: inline-block;
+  background-color: #fff;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 20px 20px 20px;
   min-height: 350px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 #content .section-right .part .part-of-part {
   width: 100%;
@@ -174,13 +174,15 @@ body {
   -webkit-flex: 4;
       -ms-flex: 4;
           flex: 4;
+  max-width: 700px;
   padding-bottom: 40px;
+  background-color: #fff;
+  margin-right: 10px;
 }
 #content .table-tweets .title-row {
   float: left;
   width: 100%;
   padding: 0 20px;
-  border-right: 1px solid #eee;
 }
 #content .table-tweets .title-row p {
   margin: 0;
@@ -193,7 +195,6 @@ body {
   min-height: 60px;
   padding: 15px 0;
   border-bottom: 1px solid #eee;
-  border-right: 1px solid #eee;
   cursor: pointer;
 }
 #content .table-tweets .rows .item:hover {
@@ -223,10 +224,10 @@ body {
   margin-bottom: 20px;
 }
 #sidebar {
-  background-color: #f2f2f2;
+  background-color: #ffffff;
   color: #595959;
   height: 100%;
-  box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #e8e8e8;
   overflow-y: auto;
   z-index: 99;
 }
@@ -482,6 +483,12 @@ body {
           flex: 1 1 100%;
   overflow-x: hidden;
   overflow-y: scroll;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 10px;
+  height: 100%;
+  background-color: #f2f2f2;
 }
 #brand-bar {
   background-color: #f2f2f2;
@@ -503,6 +510,8 @@ body {
   -webkit-flex: 1 1 100%;
       -ms-flex: 1 1 100%;
           flex: 1 1 100%;
+  padding: 20px;
+  background-color: #fff;
   padding-right: 20px;
 }
 #main.export .titlesection h3 {
@@ -519,7 +528,9 @@ body {
   -webkit-flex: 1 1 100%;
       -ms-flex: 1 1 100%;
           flex: 1 1 100%;
-  margin-top: 40px;
+  padding: 20px;
+  background-color: #fff;
+  margin-top: 20px;
 }
 #main.export .exportarea table {
   font-size: 13px;
@@ -529,16 +540,6 @@ body {
   white-space: nowrap;
   overflow: hidden;
   max-width: 120px;
-}
-#main.export .popover {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  z-index: 20;
 }
 @media only screen and (min-width: 676px) and (max-width: 1000px) {
   #diplomaticpulse-container #main {
@@ -574,19 +575,19 @@ body {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
-    -webkit-align-items: flex-start;
-        -ms-flex-align: start;
-            align-items: flex-start;
   }
   #content .table-tweets {
     -webkit-flex: 1 1 100%;
         -ms-flex: 1 1 100%;
             flex: 1 1 100%;
+    margin-right: 10px;
+    background-color: #fff;
   }
   #content .section-right {
     -webkit-flex: 1 1 100%;
         -ms-flex: 1 1 100%;
             flex: 1 1 100%;
+    background-color: #fff;
   }
   #content .table-tweets .rows .item {
     border-right: 0;
@@ -598,16 +599,6 @@ body {
 }
 ::-webkit-scrollbar-thumb {
   background: #b3b3b3;
-}
-p.section-title {
-  line-height: 40px;
-  height: 40px;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  margin: 0;
-  text-transform: uppercase;
-  border-bottom: #00aeef solid 3px;
 }
 .chart-mentions-table table,
 #tweettable table {
