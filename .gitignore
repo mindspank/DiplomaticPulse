@@ -8,6 +8,9 @@ Desktop.ini
 # Node
 node_modules/
 
+# Dist
+dist/
+
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
