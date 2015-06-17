@@ -178,7 +178,10 @@ function WordCloud(dimension, expression, element) {
 		})
 	}
 
-	pubsub.subscribe('update', render);
+	var update = pubsub.subscribe('update', render);
+		pubsub.subscribe('kill', function() {
+		pubsub.unsubscribe(update)
+	});
 	//pubsub.subscribe('resize', resize);
 
 };

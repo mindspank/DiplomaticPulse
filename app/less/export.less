@@ -1,0 +1,22 @@
+#EXPORT() {
+	#main.export {
+		flex-direction: row !important;
+		flex-wrap: wrap !important;
+		padding: 40px;
+		
+		.titlesection {
+			flex: 1 1 100%;
+		}
+		.exportarea {
+			flex: 1 1 100%;
+			
+			table tbody td {
+				text-overflow: ellipsis;
+				white-space: nowrap;
+  				overflow: hidden;
+				max-width: 120px;
+			}
+			
+		}
+	}
+};

@@ -110,8 +110,10 @@ function ContentTable(fieldlist, element) {
     return $row;
   };
 
-  //Re-render on data updates
-  pubsub.subscribe('update', render);
+  var update = pubsub.subscribe('update', render);
+  pubsub.subscribe('kill', function() {
+    pubsub.unsubscribe(update)
+  });
 
   //Page on more
   $div.click(function(event) {

@@ -1,4 +1,3 @@
-
 $('#filter-container').empty();
 
 /* Clear selections in filters */
@@ -8,16 +7,6 @@ $('#clearfilter').on('click', function() {
   QIX.app.clearAll().then(function() {
     pubsub.publish('update');
   })
-})
-
-$('#gettingstarted').click(function() {
-  if ($('#splash').hasClass('visible')) {
-    $('#splash').slideUp();
-    $('#splash').removeClass('visible');
-  } else {
-    $('#splash').slideDown();
-    $('#splash').addClass('visible')
-  }
 });
 
 /*
@@ -68,6 +57,7 @@ var mentions = new Table([{
   'value': '=Count([AIE_DOCID])'
 }, document.getElementById('mentiontable'));
 
+/* Clean up */
 pubsub.subscribe('kill', function() {
   date = null;
   contentType = null;
@@ -75,4 +65,7 @@ pubsub.subscribe('kill', function() {
   org = null;
   region = null;
   subregion = null;
+  worldmap2 = null;
+  tweettable = null;
+  mentions = null;
 })

@@ -119,6 +119,9 @@ function Table(dimensions, expression, element) {
 	}
 
 
-	pubsub.subscribe('update', render);
+	  var update = pubsub.subscribe('update', render);
+	  pubsub.subscribe('kill', function() {
+	    pubsub.unsubscribe(update)
+	  });
 
 };

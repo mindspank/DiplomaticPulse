@@ -490,6 +490,31 @@ body {
   height: 41px;
   min-height: inherit;
 }
+#main.export {
+  -webkit-flex-direction: row !important;
+      -ms-flex-direction: row !important;
+          flex-direction: row !important;
+  -webkit-flex-wrap: wrap !important;
+      -ms-flex-wrap: wrap !important;
+          flex-wrap: wrap !important;
+  padding: 40px;
+}
+#main.export .titlesection {
+  -webkit-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+}
+#main.export .exportarea {
+  -webkit-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+}
+#main.export .exportarea table tbody td {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 120px;
+}
 @media only screen and (min-width: 676px) and (max-width: 1000px) {
   #diplomaticpulse-container #main {
     -webkit-flex-wrap: wrap;

@@ -1,6 +1,7 @@
 function Filter(field, label, element, shouldsearch) {
 
   var list;
+  var listId;
   var $el = element;
   var existsInDOM = false;
   var selectedState = false;
@@ -55,7 +56,11 @@ function Filter(field, label, element, shouldsearch) {
 
   function render(data) {
     list.getLayout().then(function(layout) {
+      
+      listId = layout.qInfo.qId; 
+       
       $items.find('ul').remove();
+      
       var items = layout.qListObject.qDataPages[0].qMatrix;
       var selected = layout.qListObject.qDimensionInfo.qStateCounts.qSelected;
 
@@ -108,7 +113,8 @@ function Filter(field, label, element, shouldsearch) {
 
   var update = pubsub.subscribe('update', render);
   pubsub.subscribe('kill', function() {
-    pubsub.unsubscribe(update)
+    QIX.app.destroySessionObject(listId);
+    pubsub.unsubscribe(update);
   });
   
 };
