@@ -1,0 +1,71 @@
+#TWEETTABLE() {
+  .table-tweets {
+
+    flex: 4;
+    padding-bottom: 40px;
+
+    .title-row {
+      float: left;
+      width: 100%;
+      padding: 0 20px;
+      border-right: 1px solid #eee;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .rows {
+      float: left;
+      width: 100%;
+
+      .item {
+        min-height: 60px;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+        border-right: 1px solid #eee;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #f5f8fa;
+        }
+
+        .info, .body {
+          padding: 0 20px;
+        }
+
+        .info {
+
+          padding-bottom: 5px;
+
+          .fa-cloud {
+            color: green;
+          }
+          .fa-twitter {
+            color: #0084B4;
+          }
+        }
+
+        .body {
+
+          font-size: 13px;
+          line-height: 18px;
+
+          .details {
+
+          }
+        }
+
+      }
+
+    }
+
+    #more {
+      float: left;
+      margin-left: 20px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+  }
+}

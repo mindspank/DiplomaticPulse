@@ -1,0 +1,349 @@
+@import (reference) 'grid.less';
+@import (reference) 'sidebar.less';
+@import (reference) 'tweettable.less';
+@import (inline) 'components.less';
+@import (inline) 'bootstrap.min.css';
+@import (reference) 'color.less';
+
+
+body {
+  font-family: Roboto, sans-serif;
+  background-color: #FFF;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+#BRAND-BAR() {
+  #brand-bar {
+    background-color: #f2f2f2;
+    border: 0;
+    border-bottom: #00aeef solid 5px;
+    height: 41px;
+    min-height: inherit;
+  }
+}
+
+#SPLASH() {
+  #splash {
+
+    height: 600px;
+    display: none;
+    width: ~"calc(100% - 200px)";
+    position: absolute;
+    z-index: 1000;
+    text-align: center;
+
+    background-color: rgba(255,255,255,0.97);
+
+    border-bottom: rgba(0,0,0,0.2) 1px solid;
+    padding: 0 20px;
+
+    h1 {
+      font-size: 56px;
+      margin-top: 40px;
+    }
+
+    iframe {
+      margin-top: 80px;
+    }
+
+  }
+}
+
+#SPLASH();
+
+
+#TOP-CONTROLS() {
+  #top-controls {
+    padding: 0;
+    margin: 0;
+
+    background-color: @TOP_BGCOLOR;
+
+    img {
+      max-width: 100%;
+      display: block;
+      height: auto;
+      margin-left: 20px;
+    }
+
+    h1 {
+      font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+      color: #4d4d4d;
+      margin-left: 15px;
+      letter-spacing: -0.02em;
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 45px;
+      text-transform: uppercase;
+    }
+
+  }
+}
+
+#CONTENT() {
+  #content {
+
+    border-top: 1px solid #eee;
+
+    #search {
+
+      flex: 0 0 40px;
+      position: relative;
+      z-index: 1;
+      height: 41px;
+      display: inline;
+      padding: 6px 20px;
+
+      border-bottom: rgba(0,0,0,0.2) 1px solid;
+
+      input {
+        height: 28px;
+        float: left;
+        width: 60%;
+        padding-left: 20px;
+        max-width: 700px;
+        outline: none;
+        border: 0;
+      };
+
+      .magnifying-glass {
+        position: absolute;
+        left: 20px;
+        top: 11px;
+        height: 20px;
+        width: 20px;
+        color: #ccc;
+      }
+
+      #gettingstarted {
+        float: right;
+        max-width: 110px;
+      }
+
+    }
+
+    .section-right {
+      flex: 2;
+
+      .part {
+        display: inline-block;
+        width: 100%;
+        padding: 0 20px;
+        margin-bottom: 40px;
+
+        .part-of-part {
+          width: 100%;
+          float: left;
+        }
+
+        #worldmapsmall {
+          float: left;
+          max-width: 600px;
+
+        }
+
+        #tweettable {
+          float: left;
+          display: hidden;
+        }
+
+        #wordcloud {
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+
+      }
+
+    }
+
+    #TWEETTABLE();
+
+  }
+}
+
+#CONTENT();
+#SIDEBAR();
+#TOP-CONTROLS();
+#GRID();
+#BRAND-BAR();
+
+@media only screen and (min-width: 676px) and (max-width: 1000px) {
+
+  #diplomaticpulse-container #content {
+
+    //display: inline;
+
+  }
+
+  #diplomaticpulse-container #main {
+    flex-wrap: wrap;
+  }
+
+  #content .table-tweets {
+    flex: 1 1 100%;
+  }
+
+  #content .section-right {
+    flex: 1 1 100%;
+  }
+
+  #content #worldmapsmall {
+    height: 350px;
+    width: 400px;
+  }
+
+}
+
+@media only screen and (max-width: 675px) {
+
+   #diplomaticpulse-container #main {
+
+    //display: inline;
+
+  }
+
+  #sidebar {
+    display: none;
+    position: absolute;
+    min-width: 200px;
+
+    &.show {
+      display: inline;
+    }
+
+  }
+
+  #diplomaticpulse-container #main {
+    flex-wrap: wrap;
+  }
+
+  #content .table-tweets {
+    flex: 1 1 100%;
+  }
+
+  #content .section-right {
+    flex: 1 1 100%;
+  }
+
+  #content .table-tweets .rows .item {
+    border-right: 0;
+  }
+
+}
+
+
+
+p.section-title {
+  line-height: 40px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  margin: 0;
+  text-transform: uppercase;
+  border-bottom: #00aeef solid 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.chart-mentions-table table, #tweettable table {
+  border-collapse: separate;
+  font-size: 14px;
+  padding-top: 20px;
+  width: 100%;
+}
+
+.chart-mentions-table table thead, #tweettable table thead {
+
+}
+
+.chart-mentions-table table tr, #tweettable table tr {
+  background-color: white !important;
+  border: none;
+}
+
+.chart-mentions-table table th, #tweettable table th {
+  padding-left: 0;
+  color: #666666;
+  font-weight: 500;
+  text-align: left;
+  font-size: 14px;
+}
+
+.chart-mentions-table table td, #tweettable table td {
+  line-height: 22px;
+  padding: 0 3px 0 0;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.chart-mentions-table table tbody, #tweettable table tbody {
+
+}
+
+.chart-mentions-table table .col {
+
+}
+
+.chart-mentions-table table .col1, #tweettable table .col1 {
+  width: 40%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.chart-mentions-table table .col2, #tweettable table .col2 {
+  width: 40%;
+}
+
+.chart-mentions-table table .col2 div, #tweettable table .col2 div {
+  background: rgb(39, 48, 81);
+  height: 18px;
+}
+
+.chart-mentions-table table .col3, #tweettable table .col3 {
+  width: 10%;
+}
+
+
+
+
+.qv-map {
+
+  circle {
+    fill: brown;
+    fill-opacity: .5;
+    stroke: #fff;
+    stroke-width: .5px;
+    cursor: pointer;
+    &:hover {
+      stroke: #000;
+    }
+
+  }
+
+  path {
+    fill: #ccc;
+    stroke: #ccc;
+  }
+
+}
