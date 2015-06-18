@@ -85,3 +85,8 @@ QIX.connect(function() {
 $(window).on('resize', _.debounce(function() {
   pubsub.publish('resize');
 }, 500));
+
+/* INTRO MODAL */
+$('#modal-toggle').on('click', function() {
+  $('.intro').fadeOut('fast');
+})
