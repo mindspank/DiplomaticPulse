@@ -95,7 +95,7 @@ p.section-title {
 }
 body {
   font-family: Roboto, sans-serif;
-  background-color: #FFF;
+  background-color: #f1f1f1;
   overflow: hidden;
   height: 100%;
   width: 100%;
@@ -114,6 +114,7 @@ body {
       -ms-flex: 0 0 40px;
           flex: 0 0 40px;
   position: relative;
+  background-color: #fff;
   z-index: 1;
   height: 41px;
   display: inline;
@@ -135,11 +136,7 @@ body {
   top: 11px;
   height: 20px;
   width: 20px;
-  color: #ccc;
-}
-#content #search #gettingstarted {
-  float: right;
-  max-width: 110px;
+  color: #00aeef;
 }
 #content .section-right {
   -webkit-flex: 2;
@@ -149,10 +146,12 @@ body {
 #content .section-right .part {
   display: inline-block;
   background-color: #fff;
+  max-width: 520px;
   width: 100%;
+  margin-left: 10px;
   padding: 0 20px 20px 20px;
   min-height: 350px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 #content .section-right .part .part-of-part {
   width: 100%;
@@ -175,9 +174,7 @@ body {
       -ms-flex: 4;
           flex: 4;
   max-width: 700px;
-  padding-bottom: 40px;
   background-color: #fff;
-  margin-right: 10px;
 }
 #content .table-tweets .title-row {
   float: left;
@@ -232,16 +229,13 @@ body {
   z-index: 99;
 }
 #sidebar .heading {
-  height: 30px;
-  line-height: 30px;
-  padding-left: 10px;
-  border-bottom: rgba(0, 0, 0, 0.2) 1px solid;
-  color: #fff;
-  font-size: 13px;
-  background-color: #4d4d4d;
-}
-#sidebar .heading:not(:first-of-type) {
-  border-top: rgba(0, 0, 0, 0.2) 1px solid;
+  padding: 15px 0 10px 15px;
+  color: #00aeef;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #fff;
+  border-top: 1px solid #e8e8e8;
 }
 #sidebar .heading #clearfilter {
   float: right;
@@ -250,6 +244,9 @@ body {
   line-height: 30px;
   color: #fff;
   cursor: pointer;
+}
+#sidebar #navigation {
+  padding-bottom: 20px;
 }
 #sidebar #navigation ul {
   margin: 0;
@@ -268,7 +265,6 @@ body {
   font-weight: 500;
 }
 #sidebar #filter-container {
-  border-top: 1px solid #eee;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -281,7 +277,6 @@ body {
   -webkit-flex: 1 1 100%;
       -ms-flex: 1 1 100%;
           flex: 1 1 100%;
-  border-bottom: 1px solid #eee;
 }
 #sidebar #filter-container div.filter.expanded .title .right img {
   -webkit-transform: rotate(180deg);
@@ -295,7 +290,7 @@ body {
   font-size: 12px;
   width: 100%;
   background-color: #fff;
-  padding: 4px 0 3px 18px;
+  padding: 4px 0 3px 15px;
   border: 0;
   border-top: 1px solid #eee;
   border-bottom: 0;
@@ -332,7 +327,7 @@ body {
   display: none;
   padding-left: 18px;
   border-top: 1px solid #eee;
-  background-color: #fff;
+  background-color: #f8f8f8;
 }
 #sidebar #filter-container div.filter .items ul {
   list-style-type: none;
@@ -401,6 +396,7 @@ body {
   display: block;
   height: auto;
   margin-left: 20px;
+  margin-right: 20px;
 }
 #top-controls h1 {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -411,6 +407,7 @@ body {
   font-size: 48px;
   line-height: 45px;
   text-transform: uppercase;
+  margin: 0;
 }
 #diplomaticpulse-container {
   display: -webkit-flex;
@@ -435,9 +432,9 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-flex: 0 0 101px;
-      -ms-flex: 0 0 101px;
-          flex: 0 0 101px;
+  -webkit-flex: 0 0 85px;
+      -ms-flex: 0 0 85px;
+          flex: 0 0 85px;
 }
 #diplomaticpulse-container #content-wrapper {
   display: -webkit-flex;
@@ -551,11 +548,16 @@ body {
     -webkit-flex: 1 1 100%;
         -ms-flex: 1 1 100%;
             flex: 1 1 100%;
+    margin-bottom: 10px;
   }
   #content .section-right {
     -webkit-flex: 1 1 100%;
         -ms-flex: 1 1 100%;
             flex: 1 1 100%;
+  }
+  #content .section-right .part {
+    max-width: 100%;
+    margin-left: 0;
   }
   #content #worldmapsmall {
     height: 350px;
@@ -588,6 +590,9 @@ body {
         -ms-flex: 1 1 100%;
             flex: 1 1 100%;
     background-color: #fff;
+  }
+  #content .section-right .part {
+    max-width: 100%;
   }
   #content .table-tweets .rows .item {
     border-right: 0;

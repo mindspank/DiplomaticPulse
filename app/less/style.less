@@ -9,7 +9,7 @@
 body {
 
   font-family: Roboto, sans-serif;
-  background-color: #FFF;
+  background-color: #f1f1f1;
   overflow: hidden;
   height: 100%;
   width: 100%;
@@ -46,6 +46,7 @@ body {
       display: block;
       height: auto;
       margin-left: 20px;
+      margin-right: 20px;
     }
 
     h1 {
@@ -57,6 +58,7 @@ body {
       font-size: 48px;
       line-height: 45px;
       text-transform: uppercase;
+      margin: 0;
     }
 
   }
@@ -71,6 +73,7 @@ body {
 
       flex: 0 0 40px;
       position: relative;
+      background-color: #fff;
       z-index: 1;
       height: 41px;
       display: inline;
@@ -94,12 +97,7 @@ body {
         top: 11px;
         height: 20px;
         width: 20px;
-        color: #ccc;
-      }
-
-      #gettingstarted {
-        float: right;
-        max-width: 110px;
+        color: #00aeef;
       }
 
     }
@@ -110,10 +108,12 @@ body {
       .part {
         display: inline-block;
         background-color: #fff;
+        max-width: 520px;
         width: 100%;
+        margin-left: 10px;
         padding: 0 20px 20px 20px;
         min-height: 350px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
 
         .part-of-part {
           width: 100%;
@@ -167,10 +167,15 @@ body {
 
   #content .table-tweets {
     flex: 1 1 100%;
+    margin-bottom: 10px;
   }
 
   #content .section-right {
     flex: 1 1 100%;
+    .part {
+      max-width: 100%;
+      margin-left: 0;
+    }
   }
 
   #content #worldmapsmall {
@@ -212,6 +217,11 @@ body {
   #content .section-right {
     flex: 1 1 100%;
     background-color: #fff;
+      
+    .part {
+      max-width: 100%;
+    }
+    
   }
 
   #content .table-tweets .rows .item {

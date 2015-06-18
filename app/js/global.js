@@ -39,7 +39,7 @@ router.add('profile', function () {
     $('#main').load('static/partials/profile.html');
 });
 router.add('export', function () {
-    $('#main').toggleClass('export').load('static/partials/export.html', function() {
+    $('#main').removeClass().addClass('export').load('static/partials/export.html', function() {
        $.getScript('js/export.js')
     });
 });

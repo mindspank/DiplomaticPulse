@@ -2,13 +2,33 @@
 	#main.export {
 		flex-direction: row !important;
 		flex-wrap: wrap !important;
-		padding: 40px;
+		padding: 0 40px;
 		
 		.titlesection {
 			flex: 1 1 100%;
+			padding: 20px;
+			background-color: #fff;
+			padding-right: 20px;
+			h3 {
+				float: left;
+			}
+			p {
+				clear: both;
+			}
+			button {
+				float: right;
+				margin-top: 20px;
+			}
 		}
 		.exportarea {
 			flex: 1 1 100%;
+			padding: 20px;
+			background-color: #fff;
+			margin-top: 20px;
+			
+			table {
+				font-size: 13px;
+			}
 			
 			table tbody td {
 				text-overflow: ellipsis;
@@ -18,5 +38,6 @@
 			}
 			
 		}
+		
 	}
 };
