@@ -11,22 +11,6 @@
     };
 }(jQuery));
 
-function debounce(func, wait, immediate) {
-  var timeout;
-  return function() {
-    var context = this,
-      args = arguments;
-    var later = function() {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
-};
-
 /** ROUTER **/
 
 var router = new PathParser();
@@ -52,6 +36,8 @@ $('#navigation li').on('click', function() {
   router.run($(this).data('nav'))
 })
 
+
+/** QSOCKS CONFIGS  **/
 
 var QIX = {
   global: null,
@@ -81,12 +67,16 @@ QIX.connect(function() {
   router.run('home');
 });
 
-/* Resize */
+/** Resize **/
 $(window).on('resize', debounce(function() {
   pubsub.publish('resize');
 }, 500));
 
-/* INTRO MODAL */
+/** INTRO MODAL **/
+if( Intro.getData() ) {
+  Intro.show();
+};
+
 $('#modal-toggle').on('click', function() {
-  $('#intro').fadeOut('fast');
+  Intro.hide();
 })
