@@ -28,7 +28,7 @@ function Export(fieldlist) {
 			"qInitialDataFetch": [{
 				qTop: 0,
 				qLeft: 0,
-				qHeight: 75,
+				qHeight: 500,
 				qWidth: dimensionList.length + 1
 			}]
 		}
@@ -41,9 +41,7 @@ function Export(fieldlist) {
 		cube.getLayout().then(function(layout) {
 			$tbody.empty();
 			$thead.empty();		
-			
-			$('.exportarea').first('<p>Showing the first ' + ' rows out of ' + ' available rows.')
-			
+						
 			var $header = $('<tr />');
 			
 			layout.qHyperCube.qDimensionInfo.forEach(function(d) {
@@ -51,8 +49,8 @@ function Export(fieldlist) {
 			});
 			
 			$header.appendTo($thead);
-			
-			layout.qHyperCube.qDataPages[0].qMatrix.forEach(function(datarow) {
+						
+			layout.qHyperCube.qDataPages[0].qMatrix.some(function(datarow, i) {
 				
 				var $row = $('<tr/>');
 				
@@ -61,6 +59,8 @@ function Export(fieldlist) {
 				});
 				
 				$row.appendTo($tbody);
+				
+				return i === 75;
 				
 			});		
 			

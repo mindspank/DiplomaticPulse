@@ -4,6 +4,7 @@
 @import (inline) 'components.less';
 @import (reference) 'color.less';
 @import (reference) 'export.less';
+@import (reference) 'intro.less';
 
 
 body {
@@ -22,6 +23,29 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+#menu-button {
+  width: 50px;
+  height: 50px;
+  background-color: #354051;
+  position: fixed;
+  border-radius: 100%;
+  right: 20px;
+  bottom: 20px;
+  box-shadow: rgba(0,0,0,.5) 0 2px 4px 0;
+  cursor: pointer;
+   
+  img {
+    margin: 17px 13px;
+    vertical-align: middle;
+    border: 0;
+  }
+  
+  @media only screen and (min-width: 675px) {
+    display: none;
+  }
+  
 }
 
 .intro {
@@ -180,13 +204,13 @@ body {
 
     .section-right {
       flex: 2;
+      margin: 0 10px;
       
       .part {
         display: inline-block;
         background-color: #fff;
-        max-width: 520px;
+        max-width: 480px;
         width: 100%;
-        margin-left: 10px;
         padding: 0 20px 20px 20px;
         min-height: 350px;
         margin-bottom: 10px;
@@ -227,6 +251,7 @@ body {
 #GRID();
 #BRAND-BAR();
 #EXPORT();
+#INTRO();
 
 
 @media only screen and (min-width: 676px) and (max-width: 1000px) {
@@ -248,6 +273,7 @@ body {
 
   #content .section-right {
     flex: 1 1 100%;
+    margin: 0;
     .part {
       max-width: 100%;
       margin-left: 0;
@@ -273,6 +299,7 @@ body {
     display: none;
     position: absolute;
     min-width: 200px;
+    margin: 0;
 
     &.show {
       display: inline;
@@ -304,15 +331,6 @@ body {
     border-right: 0;
   }
 
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #b3b3b3;
 }
 
 .chart-mentions-table table, #tweettable table {

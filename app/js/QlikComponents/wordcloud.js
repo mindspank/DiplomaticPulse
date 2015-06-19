@@ -1,3 +1,4 @@
+/* global d3 */
 /* WARNING!!
 This goes against my better judgement, never ever use a wordcloud.
 They are horrible for visualization and I have sold my soul to the devil.
@@ -10,13 +11,11 @@ function WordCloud(dimension, expression, element) {
 	var w = element.offsetWidth;
 	var h = element.offsetWidth;
 
-	var svg = d3.select(element).append("svg")
-		.attr("id", "svgwordcloud");
+	var svg = d3.select(element).append("svg").attr("id", "svgwordcloud");
 
 	var max,
 		min,
 		scale = 1,
-		fontSize,
 		maxFont = 32;
 
 	QIX.app.createSessionObject({
@@ -57,6 +56,7 @@ function WordCloud(dimension, expression, element) {
 
 	function render() {
 		cube.getLayout().then(function(layout) {
+			
 			svg.attr("width", w).attr("height", h);
 			svg.selectAll('text').remove();
 
@@ -64,7 +64,6 @@ function WordCloud(dimension, expression, element) {
 				return;
 			}
 
-			var maxCharCount = layout.qHyperCube.qDimensionInfo[0].qApprMaxGlyphCount;
 			max = d3.max(layout.qHyperCube.qDataPages[0].qMatrix.map(function(d) {
 				return d[1].qNum;
 			}));
@@ -153,7 +152,6 @@ function WordCloud(dimension, expression, element) {
 					.text(function(d) {
 						return d.text;
 					});
-					//orange #FE8D0B
 			}
 
 
@@ -164,7 +162,7 @@ function WordCloud(dimension, expression, element) {
 	function resize() {
 		if(w === element.offsetWidth) {
 			return;
-		}
+		};
 
 		w = element.offsetWidth;
 		h = element.offsetHeight;
@@ -180,8 +178,9 @@ function WordCloud(dimension, expression, element) {
 
 	var update = pubsub.subscribe('update', render);
 		pubsub.subscribe('kill', function() {
-		pubsub.unsubscribe(update)
+		pubsub.unsubscribe(update);
 	});
-	//pubsub.subscribe('resize', resize);
+	
+	var resizeEvent = pubsub.subscribe('resize', resize); 
 
 };

@@ -7,7 +7,7 @@ function ContentTable(fieldlist, element) {
   var maxIdx;
   var $div = $('#more');
   var $rows = element.find('.rows');
-  var spacer = '&nbsp;&nbsp;|&nbsp;&nbsp;';
+  var spacer = '&nbsp;&nbsp;-&nbsp;&nbsp;';
 
   var dimensionList = fieldlist.map(function(d) {
     return {
@@ -104,7 +104,7 @@ function ContentTable(fieldlist, element) {
     var $row = $('<div class="item" />');
     var type = d[0].qText == 'Web' ? 'fa-cloud' : 'fa-twitter';
 
-    $('<div class="info"><i class="fa '+ type + '"></i>' + spacer + d[4].qText + spacer + d[5].qText.substring(0,16) + '</div>').appendTo($row);
+    $('<div class="info"><i class="fa '+ type + '"></i>&nbsp;&nbsp;' + d[4].qText + spacer + d[5].qText.substring(0,16) + '</div>').appendTo($row);
     $('<div class="body">' + d[2].qText + '</div>').appendTo($row);
 
     return $row;

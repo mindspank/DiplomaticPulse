@@ -1,5 +1,4 @@
 .qv-button-light {
-
   box-sizing: border-box;
   height: 28px;
   line-height: 24px;
@@ -24,6 +23,15 @@
     box-shadow: inset 1px 0 0 0 #595959, inset 0 1px 0 0 #595959, inset -1px 0 0 #595959, inset 0 -1px 0 0 #595959
   }
 
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b3b3b3;
 }
 
 ::-webkit-input-placeholder {
@@ -105,6 +113,27 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+#menu-button {
+  width: 50px;
+  height: 50px;
+  background-color: #354051;
+  position: fixed;
+  border-radius: 100%;
+  right: 20px;
+  bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px 0;
+  cursor: pointer;
+}
+#menu-button img {
+  margin: 17px 13px;
+  vertical-align: middle;
+  border: 0;
+}
+@media only screen and (min-width: 675px) {
+  #menu-button {
+    display: none;
+  }
 }
 .intro {
   position: absolute;
@@ -202,13 +231,13 @@ body {
   -webkit-flex: 2;
       -ms-flex: 2;
           flex: 2;
+  margin: 0 10px;
 }
 #content .section-right .part {
   display: inline-block;
   background-color: #fff;
-  max-width: 520px;
+  max-width: 480px;
   width: 100%;
-  margin-left: 10px;
   padding: 0 20px 20px 20px;
   min-height: 350px;
   margin-bottom: 10px;
@@ -263,6 +292,8 @@ body {
 }
 #content .table-tweets .rows .item .info {
   padding-bottom: 5px;
+  font-size: 12px;
+  color: #7F7F7F;
 }
 #content .table-tweets .rows .item .info .fa-cloud {
   color: green;
@@ -618,6 +649,64 @@ body {
   overflow: hidden;
   max-width: 120px;
 }
+#intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5000;
+  background: rgba(0, 0, 0, 0.4);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+#intro .intro-modal {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 10px;
+  background-clip: padding-box;
+  box-shadow: 0 15px 30px 6px rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  background: #fff;
+  max-width: 50%;
+  min-width: 700px;
+  height: 400px;
+  color: #595959;
+  overflow: hidden;
+}
+#intro .intro-modal .intro-heading {
+  -webkit-flex: 0 0 60px;
+      -ms-flex: 0 0 60px;
+          flex: 0 0 60px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #d9d9d9;
+}
+#intro .intro-modal .intro-heading img {
+  max-width: 90px;
+  height: auto;
+  float: left;
+  padding-right: 20px;
+}
+#intro .intro-modal .intro-heading h2 {
+  float: left;
+  margin: 0;
+  line-height: 50px;
+}
+#intro .intro-modal .content {
+  width: 100%;
+  padding-top: 30px;
+}
 @media only screen and (min-width: 676px) and (max-width: 1000px) {
   #diplomaticpulse-container #main {
     -webkit-flex-wrap: wrap;
@@ -634,6 +723,7 @@ body {
     -webkit-flex: 1 1 100%;
         -ms-flex: 1 1 100%;
             flex: 1 1 100%;
+    margin: 0;
   }
   #content .section-right .part {
     max-width: 100%;
@@ -649,6 +739,7 @@ body {
     display: none;
     position: absolute;
     min-width: 200px;
+    margin: 0;
   }
   #sidebar.show {
     display: inline;
@@ -677,13 +768,6 @@ body {
   #content .table-tweets .rows .item {
     border-right: 0;
   }
-}
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background: #b3b3b3;
 }
 .chart-mentions-table table,
 #tweettable table {

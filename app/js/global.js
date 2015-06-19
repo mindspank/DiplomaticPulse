@@ -82,11 +82,11 @@ QIX.connect(function() {
 });
 
 /* Resize */
-$(window).on('resize', _.debounce(function() {
+$(window).on('resize', debounce(function() {
   pubsub.publish('resize');
 }, 500));
 
 /* INTRO MODAL */
 $('#modal-toggle').on('click', function() {
-  $('.intro').fadeOut('fast');
+  $('#intro').fadeOut('fast');
 })
