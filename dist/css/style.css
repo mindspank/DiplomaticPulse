@@ -433,6 +433,12 @@ body {
   margin-left: 20px;
   margin-right: 20px;
 }
+@media only screen and (max-width: 675px) {
+  #top-controls img {
+    width: 56px;
+    margin: 0 10px;
+  }
+}
 #top-controls h1 {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #4d4d4d;
@@ -443,6 +449,11 @@ body {
   line-height: 45px;
   text-transform: uppercase;
   margin: 0;
+}
+@media only screen and (max-width: 675px) {
+  #top-controls h1 {
+    font-size: 28px;
+  }
 }
 #diplomaticpulse-container {
   display: -webkit-flex;
@@ -648,7 +659,7 @@ body {
   width: 100%;
   padding-top: 30px;
 }
-@media only screen and (min-width: 676px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #diplomaticpulse-container #main {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
@@ -676,6 +687,9 @@ body {
   }
 }
 @media only screen and (max-width: 675px) {
+  #intro {
+    display: none !imporant;
+  }
   #sidebar {
     display: none;
     position: absolute;
@@ -694,14 +708,11 @@ body {
     -webkit-flex: 1 1 100%;
         -ms-flex: 1 1 100%;
             flex: 1 1 100%;
-    margin-right: 10px;
-    background-color: #fff;
   }
   #content .section-right {
     -webkit-flex: 1 1 100%;
         -ms-flex: 1 1 100%;
             flex: 1 1 100%;
-    background-color: #fff;
   }
   #content .section-right .part {
     max-width: 100%;

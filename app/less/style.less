@@ -7,6 +7,10 @@
 @import (reference) 'intro.less';
 
 
+@tablet: ~"only screen and (max-width: 1000px)";
+@phone: ~"only screen and (max-width: 675px)";
+
+
 body {
 
   font-family: Roboto, sans-serif;
@@ -91,6 +95,12 @@ body {
       height: auto;
       margin-left: 20px;
       margin-right: 20px;
+      
+      @media @phone {
+        width: 56px;
+        margin: 0 10px;
+      }
+      
     }
 
     h1 {
@@ -103,6 +113,10 @@ body {
       line-height: 45px;
       text-transform: uppercase;
       margin: 0;
+      
+      @media @phone {
+        font-size: 28px;
+      }
     }
 
   }
@@ -199,7 +213,7 @@ body {
 #INTRO();
 
 
-@media only screen and (min-width: 676px) and (max-width: 1000px) {
+@media @tablet {
 
   #diplomaticpulse-container #content {
 
@@ -232,12 +246,16 @@ body {
 
 }
 
-@media only screen and (max-width: 675px) {
+@media @phone {
 
    #diplomaticpulse-container #main {
 
     //display: inline;
 
+  }
+  
+  #intro {
+    display: none !imporant;
   }
 
   #sidebar {
@@ -258,13 +276,10 @@ body {
 
   #content .table-tweets {
     flex: 1 1 100%;
-    margin-right: 10px;
-    background-color: #fff;
   }
 
   #content .section-right {
     flex: 1 1 100%;
-    background-color: #fff;
       
     .part {
       max-width: 100%;

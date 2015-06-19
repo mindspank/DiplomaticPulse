@@ -15,10 +15,12 @@ function WorldMap(dimensions, expression, element) {
 
 	var cube, geo, b, s, t, projection, path, data = {},
 		qHeightValue = 500,
-		index = 0;
+		index = 0,
+		width,
+		height;
 
-	var width = element.offsetWidth;
-	var height = width / 1.5;
+	width = element.offsetWidth;
+	height = width / 1.5;
 
 	projection = d3.geo.mercator()
 		.scale(1)
@@ -44,7 +46,7 @@ function WorldMap(dimensions, expression, element) {
 
 		geo = world;
 
-		b = path.bounds(world),
+		b = path.bounds(geo),
 			s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
 			t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
 
@@ -149,28 +151,29 @@ function WorldMap(dimensions, expression, element) {
 
 
 	function resize() {
-		svg.selectAll('path circle').remove();
-		width = $(element).width();
-		height = width;
-
+		svg.selectAll('path, circle').remove();
+		
+		width = element.offsetWidth;
+		height = width / 1.5;
+		
 		svg.attr('width', width).attr('height', height);
 
 		projection = d3.geo.mercator()
-			.scale(1)
-			.translate([0, 0]);
+		.scale(1)
+		.translate([0, 0]);
+
+		path = d3.geo.path().projection(projection);
 
 		b = path.bounds(geo),
 			s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
 			t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
 
-		path = d3.geo.path().projection(projection);
 		projection
 			.scale(s)
 			.translate(t);
 
-
-		svg.selectAll('path')
-			.data(geo.features)
+		svg.selectAll('path').
+			data(geo.features)
 			.enter()
 			.append('path')
 			.attr('d', path);
@@ -221,6 +224,6 @@ function WorldMap(dimensions, expression, element) {
 	  pubsub.subscribe('kill', function() {
 	    pubsub.unsubscribe(update)
 	  });
-	//pubsub.subscribe('resize', resize);
+	pubsub.subscribe('resize', resize);
 
 };

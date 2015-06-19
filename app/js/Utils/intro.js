@@ -17,6 +17,7 @@
         return localStorage.setItem(keyName, value.toString());
       },
       show: function() {
+        if(global.matchMedia("(max-width: 675px)").matches) return;
         $('#intro').css('display', 'flex').animate({
           opacity: 1
         }, 'fast');

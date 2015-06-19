@@ -80,3 +80,7 @@ if( Intro.getData() ) {
 $('#modal-toggle').on('click', function() {
   Intro.hide();
 })
+
+$('#menu-button').on('click', function() {
+  $('#sidebar').toggle();
+})

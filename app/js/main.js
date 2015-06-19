@@ -44,7 +44,7 @@ var tweettable = new Table([{
   'dim': 'entity_name',
   'label': 'Member State'
 }], {
-  'label': 'Number of Tweets',
+  'label': 'Web and Tweets',
   'value': '=Count({<entity_type={"Member State"}>}[AIE_DOCID])'
 }, document.getElementById('tweettable'));
 
