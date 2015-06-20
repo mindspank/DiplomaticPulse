@@ -127,3 +127,43 @@ p.section-title {
     display: block;
   }
 }
+/* THREE COLUMN TABLE WITH BAR */
+.three-col-table table {
+  border-collapse: separate;
+  font-size: 14px;
+  padding-top: 20px;
+  width: 100%;
+}
+.three-col-table table tr {
+  background-color: white !important;
+  border: none;
+}
+.three-col-table table th {
+  padding-left: 0;
+  color: #666666;
+  font-weight: 500;
+  text-align: left;
+  font-size: 14px;
+}
+.three-col-table table td {
+  line-height: 22px;
+  padding: 0 3px 0 0;
+  vertical-align: top;
+  white-space: nowrap;
+}
+.three-col-table table .col1 {
+  width: 40%;
+  text-align: left;
+  cursor: pointer;
+}
+.three-col-table table .col2 {
+  width: 40%;
+  padding-right: 10px;
+}
+.three-col-table table .col2 div {
+  height: 18px;
+  background: #273051;
+}
+.three-col-table table .col3 {
+  width: 10%;
+}
