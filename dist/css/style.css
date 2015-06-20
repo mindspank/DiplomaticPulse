@@ -18,38 +18,31 @@
   box-shadow: none;
   color: #595959;
   border-radius: 3px;
-
-  &:hover {
-    box-shadow: inset 1px 0 0 0 #595959, inset 0 1px 0 0 #595959, inset -1px 0 0 #595959, inset 0 -1px 0 0 #595959
-  }
-
 }
-
+.qv-button-light:hover {
+  box-shadow: inset 1px 0 0 0 #595959, inset 0 1px 0 0 #595959, inset -1px 0 0 #595959, inset 0 -1px 0 0 #595959;
+}
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-
 ::-webkit-scrollbar-thumb {
   background: #b3b3b3;
 }
-
 ::-webkit-input-placeholder {
-   color: #ccc;
+  color: #ccc;
 }
-
-:-moz-placeholder { /* Firefox 18- */
-   color: #ccc;
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #ccc;
 }
-
-::-moz-placeholder {  /* Firefox 19+ */
-   color: #ccc;
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #ccc;
 }
-
 :-ms-input-placeholder {
-   color: #ccc;
+  color: #ccc;
 }
-
 /*  D3 Tip  */
 .d3-tip {
   font-size: 14px;
@@ -60,11 +53,9 @@
   border-radius: 2px;
   z-index: 9999;
 }
-
 .d3-tip span {
   color: #fff;
 }
-
 /* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
   box-sizing: border-box;
@@ -77,14 +68,12 @@
   position: absolute;
   text-align: center;
 }
-
 /* Style northward tooltips differently */
 .d3-tip.n:after {
   margin: -1px 0 0 0;
   top: 100%;
   left: 0;
 }
-
 /* Section Titles */
 p.section-title {
   line-height: 40px;
@@ -96,25 +85,28 @@ p.section-title {
   text-transform: uppercase;
   border-bottom: #00aeef solid 3px;
 }
-
 .bordered {
   border: 1px solid;
   border-color: #e5e6e9 #dfe0e4 #d0d1d5;
 }
-body {
-  font-family: Roboto, sans-serif;
-  background-color: #f1f1f1;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
+/* UN STYLE MAPS */
+.qv-map circle {
+  fill: brown;
+  fill-opacity: .5;
+  stroke: #fff;
+  stroke-width: .5px;
+  cursor: pointer;
 }
-* {
-  padding: 0;
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+.qv-map circle:hover {
+  stroke: #000;
 }
+.qv-map path {
+  fill: #ccc;
+  stroke: #ccc;
+}
+/* MENU BUTTON IN PHONE LAYOUT */
 #menu-button {
+  display: none;
   width: 50px;
   height: 50px;
   background-color: #354051;
@@ -130,10 +122,23 @@ body {
   vertical-align: middle;
   border: 0;
 }
-@media only screen and (min-width: 675px) {
+@media only screen and (max-width: 675px) {
   #menu-button {
-    display: none;
+    display: block;
   }
+}
+body {
+  font-family: Roboto, sans-serif;
+  background-color: #f1f1f1;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 #content {
   border-top: 1px solid #eee;
@@ -174,6 +179,15 @@ body {
       -ms-flex: 2;
           flex: 2;
   margin: 0 10px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
 }
 #content .section-right .part {
   display: inline-block;
@@ -183,6 +197,10 @@ body {
   padding: 0 20px 20px 20px;
   min-height: 350px;
   margin-bottom: 10px;
+  margin-right: 10px;
+  -webkit-flex: 1 1 450px;
+      -ms-flex: 1 1 450px;
+          flex: 1 1 450px;
 }
 #content .section-right .part .part-of-part {
   width: 100%;
@@ -206,6 +224,15 @@ body {
           flex: 4;
   max-width: 700px;
   background-color: #fff;
+}
+@media only screen and (max-width: 1000px) {
+  #content .table-tweets {
+    max-width: 100%;
+    -webkit-flex: 1 1 100%;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+    margin-bottom: 10px;
+  }
 }
 #content .table-tweets .title-row {
   float: left;
@@ -245,7 +272,7 @@ body {
 }
 #content .table-tweets .rows .item .body {
   font-size: 13px;
-  line-height: 18px;
+  line-height: 22px;
 }
 #content .table-tweets #more {
   float: left;
@@ -276,6 +303,11 @@ body {
   font-size: 16px;
   color: #00aeef;
   cursor: pointer;
+}
+@media only screen and (max-width: 675px) {
+  #sidebar .heading {
+    display: none;
+  }
 }
 #sidebar #navigation {
   padding-bottom: 20px;
@@ -420,40 +452,6 @@ body {
   -webkit-order: 5;
       -ms-flex-order: 5;
           order: 5;
-}
-#top-controls {
-  padding: 0;
-  margin: 0;
-  background-color: #ffffff;
-}
-#top-controls img {
-  max-width: 100%;
-  display: block;
-  height: auto;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-@media only screen and (max-width: 675px) {
-  #top-controls img {
-    width: 56px;
-    margin: 0 10px;
-  }
-}
-#top-controls h1 {
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #4d4d4d;
-  margin-left: 15px;
-  letter-spacing: -0.02em;
-  font-weight: 500;
-  font-size: 48px;
-  line-height: 45px;
-  text-transform: uppercase;
-  margin: 0;
-}
-@media only screen and (max-width: 675px) {
-  #top-controls h1 {
-    font-size: 28px;
-  }
 }
 #diplomaticpulse-container {
   display: -webkit-flex;
@@ -659,17 +657,50 @@ body {
   width: 100%;
   padding-top: 30px;
 }
+@media only screen and (max-width: 675px) {
+  #intro {
+    display: none !important;
+  }
+}
+#top-controls {
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
+}
+#top-controls img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+@media only screen and (max-width: 675px) {
+  #top-controls img {
+    width: 56px;
+    margin: 0 10px;
+  }
+}
+#top-controls h1 {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #4d4d4d;
+  margin-left: 15px;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 45px;
+  text-transform: uppercase;
+  margin: 0;
+}
+@media only screen and (max-width: 675px) {
+  #top-controls h1 {
+    font-size: 28px;
+  }
+}
 @media only screen and (max-width: 1000px) {
   #diplomaticpulse-container #main {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
-  }
-  #content .table-tweets {
-    -webkit-flex: 1 1 100%;
-        -ms-flex: 1 1 100%;
-            flex: 1 1 100%;
-    margin-bottom: 10px;
   }
   #content .section-right {
     -webkit-flex: 1 1 100%;
@@ -680,16 +711,10 @@ body {
   #content .section-right .part {
     max-width: 100%;
     margin-left: 0;
-  }
-  #content #worldmapsmall {
-    height: 350px;
-    width: 400px;
+    margin-right: 0;
   }
 }
 @media only screen and (max-width: 675px) {
-  #intro {
-    display: none !imporant;
-  }
   #sidebar {
     display: none;
     position: absolute;
@@ -703,11 +728,6 @@ body {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
-  }
-  #content .table-tweets {
-    -webkit-flex: 1 1 100%;
-        -ms-flex: 1 1 100%;
-            flex: 1 1 100%;
   }
   #content .section-right {
     -webkit-flex: 1 1 100%;
@@ -767,18 +787,4 @@ body {
 .chart-mentions-table table .col3,
 #tweettable table .col3 {
   width: 10%;
-}
-.qv-map circle {
-  fill: brown;
-  fill-opacity: .5;
-  stroke: #fff;
-  stroke-width: .5px;
-  cursor: pointer;
-}
-.qv-map circle:hover {
-  stroke: #000;
-}
-.qv-map path {
-  fill: #ccc;
-  stroke: #ccc;
 }

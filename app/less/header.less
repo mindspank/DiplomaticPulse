@@ -1,0 +1,41 @@
+@import (reference) 'variables.less';
+
+#HEADER() {
+  #top-controls {
+    padding: 0;
+    margin: 0;
+
+    background-color: @TOP_BGCOLOR;
+
+    img {
+      max-width: 100%;
+      display: block;
+      height: auto;
+      margin-left: 20px;
+      margin-right: 20px;
+      
+      @media @phone {
+        width: 56px;
+        margin: 0 10px;
+      }
+      
+    }
+
+    h1 {
+      font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+      color: #4d4d4d;
+      margin-left: 15px;
+      letter-spacing: -0.02em;
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 45px;
+      text-transform: uppercase;
+      margin: 0;
+      
+      @media @phone {
+        font-size: 28px;
+      }
+    }
+
+  }
+}

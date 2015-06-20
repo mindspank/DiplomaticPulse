@@ -1,24 +1,19 @@
+@import (reference) 'variables.less';
 @import (reference) 'grid.less';
 @import (reference) 'sidebar.less';
 @import (reference) 'tweettable.less';
-@import (inline) 'components.less';
-@import (reference) 'color.less';
 @import (reference) 'export.less';
 @import (reference) 'intro.less';
-
-
-@tablet: ~"only screen and (max-width: 1000px)";
-@phone: ~"only screen and (max-width: 675px)";
-
+@import (reference) 'header.less';
+@import (reference) 'table.less';
+@import 'components.less';
 
 body {
-
   font-family: Roboto, sans-serif;
   background-color: #f1f1f1;
   overflow: hidden;
   height: 100%;
   width: 100%;
-
 }
 
 * {
@@ -29,28 +24,13 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-#menu-button {
-  width: 50px;
-  height: 50px;
-  background-color: #354051;
-  position: fixed;
-  border-radius: 100%;
-  right: 20px;
-  bottom: 20px;
-  box-shadow: rgba(0,0,0,.5) 0 2px 4px 0;
-  cursor: pointer;
-   
-  img {
-    margin: 17px 13px;
-    vertical-align: middle;
-    border: 0;
-  }
-  
-  @media only screen and (min-width: 675px) {
-    display: none;
-  }
-  
-}
+#CONTENT();
+#SIDEBAR();
+#GRID();
+#BRAND-BAR();
+#EXPORT();
+#INTRO();
+#HEADER();
 
 #BRAND-BAR() {
   #brand-bar {
@@ -79,46 +59,6 @@ body {
       }
     }
     
-  }
-}
-
-#TOP-CONTROLS() {
-  #top-controls {
-    padding: 0;
-    margin: 0;
-
-    background-color: @TOP_BGCOLOR;
-
-    img {
-      max-width: 100%;
-      display: block;
-      height: auto;
-      margin-left: 20px;
-      margin-right: 20px;
-      
-      @media @phone {
-        width: 56px;
-        margin: 0 10px;
-      }
-      
-    }
-
-    h1 {
-      font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
-      color: #4d4d4d;
-      margin-left: 15px;
-      letter-spacing: -0.02em;
-      font-weight: 500;
-      font-size: 48px;
-      line-height: 45px;
-      text-transform: uppercase;
-      margin: 0;
-      
-      @media @phone {
-        font-size: 28px;
-      }
-    }
-
   }
 }
 
@@ -164,6 +104,9 @@ body {
     .section-right {
       flex: 2;
       margin: 0 10px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
       
       .part {
         display: inline-block;
@@ -173,6 +116,8 @@ body {
         padding: 0 20px 20px 20px;
         min-height: 350px;
         margin-bottom: 10px;
+        margin-right: 10px;
+        flex: 1 1 450px;
 
         .part-of-part {
           width: 100%;
@@ -182,7 +127,6 @@ body {
         #worldmapsmall {
           float: left;
           max-width: 600px;
-
         }
 
         #tweettable {
@@ -204,14 +148,6 @@ body {
   }
 }
 
-#CONTENT();
-#SIDEBAR();
-#TOP-CONTROLS();
-#GRID();
-#BRAND-BAR();
-#EXPORT();
-#INTRO();
-
 
 @media @tablet {
 
@@ -225,23 +161,14 @@ body {
     flex-wrap: wrap;
   }
 
-  #content .table-tweets {
-    flex: 1 1 100%;
-    margin-bottom: 10px;
-  }
-
   #content .section-right {
     flex: 1 1 100%;
     margin: 0;
     .part {
       max-width: 100%;
       margin-left: 0;
+      margin-right: 0;
     }
-  }
-
-  #content #worldmapsmall {
-    height: 350px;
-    width: 400px;
   }
 
 }
@@ -252,10 +179,6 @@ body {
 
     //display: inline;
 
-  }
-  
-  #intro {
-    display: none !imporant;
   }
 
   #sidebar {
@@ -272,10 +195,6 @@ body {
 
   #diplomaticpulse-container #main {
     flex-wrap: wrap;
-  }
-
-  #content .table-tweets {
-    flex: 1 1 100%;
   }
 
   #content .section-right {
@@ -324,14 +243,6 @@ body {
   white-space: nowrap;
 }
 
-.chart-mentions-table table tbody, #tweettable table tbody {
-
-}
-
-.chart-mentions-table table .col {
-
-}
-
 .chart-mentions-table table .col1, #tweettable table .col1 {
   width: 40%;
   text-align: left;
@@ -350,28 +261,4 @@ body {
 
 .chart-mentions-table table .col3, #tweettable table .col3 {
   width: 10%;
-}
-
-
-
-
-.qv-map {
-
-  circle {
-    fill: brown;
-    fill-opacity: .5;
-    stroke: #fff;
-    stroke-width: .5px;
-    cursor: pointer;
-    &:hover {
-      stroke: #000;
-    }
-
-  }
-
-  path {
-    fill: #ccc;
-    stroke: #ccc;
-  }
-
 }

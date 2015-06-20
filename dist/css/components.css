@@ -89,3 +89,41 @@ p.section-title {
   border: 1px solid;
   border-color: #e5e6e9 #dfe0e4 #d0d1d5;
 }
+/* UN STYLE MAPS */
+.qv-map circle {
+  fill: brown;
+  fill-opacity: .5;
+  stroke: #fff;
+  stroke-width: .5px;
+  cursor: pointer;
+}
+.qv-map circle:hover {
+  stroke: #000;
+}
+.qv-map path {
+  fill: #ccc;
+  stroke: #ccc;
+}
+/* MENU BUTTON IN PHONE LAYOUT */
+#menu-button {
+  display: none;
+  width: 50px;
+  height: 50px;
+  background-color: #354051;
+  position: fixed;
+  border-radius: 100%;
+  right: 20px;
+  bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px 0;
+  cursor: pointer;
+}
+#menu-button img {
+  margin: 17px 13px;
+  vertical-align: middle;
+  border: 0;
+}
+@media only screen and (max-width: 675px) {
+  #menu-button {
+    display: block;
+  }
+}

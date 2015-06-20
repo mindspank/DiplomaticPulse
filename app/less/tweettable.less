@@ -1,9 +1,17 @@
+@import (reference) 'variables.less';
+
 #TWEETTABLE() {
   .table-tweets {
 
     flex: 4;
     max-width: 700px;
     background-color: #fff;
+    
+    @media @tablet {
+      max-width: 100%;
+      flex: 1 1 100%;
+      margin-bottom: 10px;
+    }
 
     .title-row {
       float: left;
@@ -50,7 +58,7 @@
         .body {
 
           font-size: 13px;
-          line-height: 18px;
+          line-height: 22px;
 
           .details {
 
