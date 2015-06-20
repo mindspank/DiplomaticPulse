@@ -73,115 +73,63 @@ body {
       }
 
     }
-
-    .section-right {
-      flex: 2;
-      margin: 0 10px;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      
-      .part {
-        display: inline-block;
-        background-color: #fff;
-        max-width: 480px;
-        width: 100%;
-        padding: 0 20px 20px 20px;
-        min-height: 350px;
-        margin-bottom: 10px;
-        margin-right: 10px;
-        flex: 1 1 450px;
-
-        .part-of-part {
-          width: 100%;
-          float: left;
-        }
-
-        #worldmapsmall {
-          float: left;
-          max-width: 600px;
-        }
-
-        #tweettable {
-          float: left;
-          display: hidden;
-        }
-
-        #wordcloud {
-          margin-top: 20px;
-          margin-bottom: 20px;
-        }
-
-      }
-
-    }
-
-    #TWEETTABLE();
-
-  }
-}
-
-
-@media @tablet {
-
-  #diplomaticpulse-container #content {
-
-    //display: inline;
-
-  }
-
-  #diplomaticpulse-container #main {
-    flex-wrap: wrap;
-  }
-
-  #content .section-right {
-    flex: 1 1 100%;
-    margin: 0;
-    .part {
-      max-width: 100%;
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-
-}
-
-@media @phone {
-
-   #diplomaticpulse-container #main {
-
-    //display: inline;
-
-  }
-
-  #sidebar {
-    display: none;
-    position: absolute;
-    min-width: 200px;
-    margin: 0;
-
-    &.show {
-      display: inline;
-    }
-
-  }
-
-  #diplomaticpulse-container #main {
-    flex-wrap: wrap;
-  }
-
-  #content .section-right {
-    flex: 1 1 100%;
-      
-    .part {
-      max-width: 100%;
-    }
     
-  }
+    #main {
+      .section-right {
+        flex: 2;
+        margin: 0 10px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+        @media @tablet {
+          flex: 1 1 100%;
+          margin: 0;       
+        }
+        
+        .part {
+          display: inline-block;
+          background-color: #fff;
+          max-width: 480px;
+          width: 100%;
+          padding: 0 20px 20px 20px;
+          min-height: 350px;
+          margin-bottom: 10px;
+          margin-right: 10px;
+          flex: 1 1 450px;
+          
+          @media @tablet {
+            max-width: 100%;
+            margin-left: 0;
+            margin-right: 0;          
+          }
+  
+          .part-of-part {
+            width: 100%;
+            float: left;
+          }
+  
+          #worldmapsmall {
+            float: left;
+            max-width: 600px;
+          }
+  
+          #tweettable {
+            float: left;
+            display: hidden;
+          }
+  
+          #wordcloud {
+            margin-top: 20px;
+            margin-bottom: 20px;
+          }
+  
+        }
+  
+      }
+  
+      #TWEETTABLE();      
+    }
 
-  #content .table-tweets .rows .item {
-    border-right: 0;
   }
-
 }
-

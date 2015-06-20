@@ -379,6 +379,13 @@ body {
   height: 100%;
   background-color: #f2f2f2;
 }
+@media only screen and (max-width: 1000px) {
+  #diplomaticpulse-container #main {
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+  }
+}
 #sidebar {
   background-color: #ffffff;
   color: #595959;
@@ -386,6 +393,17 @@ body {
   border-right: 1px solid #e8e8e8;
   overflow-y: auto;
   z-index: 99;
+}
+@media only screen and (max-width: 675px) {
+  #sidebar {
+    display: none;
+    position: absolute;
+    min-width: 200px;
+    margin: 0;
+  }
+  #sidebar.show {
+    display: inline;
+  }
 }
 #sidebar .heading {
   padding: 15px 0 10px 15px;
@@ -402,11 +420,6 @@ body {
   font-size: 16px;
   color: #00aeef;
   cursor: pointer;
-}
-@media only screen and (max-width: 675px) {
-  #sidebar .heading {
-    display: none;
-  }
 }
 #sidebar #navigation {
   padding-bottom: 20px;
@@ -586,7 +599,7 @@ body {
   color: #00aeef;
   font-size: 24px;
 }
-#content .section-right {
+#content #main .section-right {
   -webkit-flex: 2;
       -ms-flex: 2;
           flex: 2;
@@ -601,7 +614,15 @@ body {
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
 }
-#content .section-right .part {
+@media only screen and (max-width: 1000px) {
+  #content #main .section-right {
+    -webkit-flex: 1 1 100%;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+    margin: 0;
+  }
+}
+#content #main .section-right .part {
   display: inline-block;
   background-color: #fff;
   max-width: 480px;
@@ -614,23 +635,30 @@ body {
       -ms-flex: 1 1 450px;
           flex: 1 1 450px;
 }
-#content .section-right .part .part-of-part {
+@media only screen and (max-width: 1000px) {
+  #content #main .section-right .part {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+#content #main .section-right .part .part-of-part {
   width: 100%;
   float: left;
 }
-#content .section-right .part #worldmapsmall {
+#content #main .section-right .part #worldmapsmall {
   float: left;
   max-width: 600px;
 }
-#content .section-right .part #tweettable {
+#content #main .section-right .part #tweettable {
   float: left;
   display: hidden;
 }
-#content .section-right .part #wordcloud {
+#content #main .section-right .part #wordcloud {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-#content .table-tweets {
+#content #main .table-tweets {
   -webkit-flex: 4;
       -ms-flex: 4;
           flex: 4;
@@ -638,7 +666,7 @@ body {
   background-color: #fff;
 }
 @media only screen and (max-width: 1000px) {
-  #content .table-tweets {
+  #content #main .table-tweets {
     max-width: 100%;
     -webkit-flex: 1 1 100%;
         -ms-flex: 1 1 100%;
@@ -646,47 +674,47 @@ body {
     margin-bottom: 10px;
   }
 }
-#content .table-tweets .title-row {
+#content #main .table-tweets .title-row {
   float: left;
   width: 100%;
   padding: 0 20px;
 }
-#content .table-tweets .title-row p {
+#content #main .table-tweets .title-row p {
   margin: 0;
 }
-#content .table-tweets .rows {
+#content #main .table-tweets .rows {
   float: left;
   width: 100%;
 }
-#content .table-tweets .rows .item {
+#content #main .table-tweets .rows .item {
   min-height: 60px;
   padding: 15px 0;
   border-bottom: 1px solid #eee;
   cursor: pointer;
 }
-#content .table-tweets .rows .item:hover {
+#content #main .table-tweets .rows .item:hover {
   background-color: #f5f8fa;
 }
-#content .table-tweets .rows .item .info,
-#content .table-tweets .rows .item .body {
+#content #main .table-tweets .rows .item .info,
+#content #main .table-tweets .rows .item .body {
   padding: 0 20px;
 }
-#content .table-tweets .rows .item .info {
+#content #main .table-tweets .rows .item .info {
   padding-bottom: 5px;
   font-size: 12px;
   color: #7F7F7F;
 }
-#content .table-tweets .rows .item .info .fa-cloud {
+#content #main .table-tweets .rows .item .info .fa-cloud {
   color: green;
 }
-#content .table-tweets .rows .item .info .fa-twitter {
+#content #main .table-tweets .rows .item .info .fa-twitter {
   color: #0084B4;
 }
-#content .table-tweets .rows .item .body {
+#content #main .table-tweets .rows .item .body {
   font-size: 13px;
   line-height: 22px;
 }
-#content .table-tweets #more {
+#content #main .table-tweets #more {
   float: left;
   margin-left: 20px;
   margin-top: 20px;
@@ -735,49 +763,4 @@ body {
   white-space: nowrap;
   overflow: hidden;
   max-width: 120px;
-}
-@media only screen and (max-width: 1000px) {
-  #diplomaticpulse-container #main {
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-  }
-  #content .section-right {
-    -webkit-flex: 1 1 100%;
-        -ms-flex: 1 1 100%;
-            flex: 1 1 100%;
-    margin: 0;
-  }
-  #content .section-right .part {
-    max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-@media only screen and (max-width: 675px) {
-  #sidebar {
-    display: none;
-    position: absolute;
-    min-width: 200px;
-    margin: 0;
-  }
-  #sidebar.show {
-    display: inline;
-  }
-  #diplomaticpulse-container #main {
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-  }
-  #content .section-right {
-    -webkit-flex: 1 1 100%;
-        -ms-flex: 1 1 100%;
-            flex: 1 1 100%;
-  }
-  #content .section-right .part {
-    max-width: 100%;
-  }
-  #content .table-tweets .rows .item {
-    border-right: 0;
-  }
 }
