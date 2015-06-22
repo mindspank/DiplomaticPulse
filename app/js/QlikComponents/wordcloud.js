@@ -61,6 +61,15 @@ function WordCloud(dimension, expression, element) {
 			svg.selectAll('text').remove();
 
 			if(layout.qHyperCube.qDataPages[0].qMatrix[0][0].qIsEmpty) {
+				
+				svg.append('text')
+					.attr("text-anchor", "middle")
+					.attr("transform", function(d) {
+						return "translate(" + [w / 2, h / 2] + ")";
+					})
+					.style("font-size", '16px')
+					.style("fill", 'rgb(39, 48, 81)')
+					.text('No Hashtags Available');
 				return;
 			}
 

@@ -50,6 +50,13 @@ function Table(dimensions, expression, element) {
 		cube.getLayout().then(function(layout) {
 			$(element).empty();
 
+			if(layout.qHyperCube.qDataPages[0].qMatrix[0][0].qIsEmpty) {
+				
+				$('<p>No Mentions Available</p>').appendTo($(element));
+				
+				return;
+			}
+
 			var $table = $('<table />');
 			var $thead = createHeader(layout);
 			var $tbody = $('<tbody />');
