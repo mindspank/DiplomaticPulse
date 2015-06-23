@@ -35,6 +35,7 @@ function reload() {
 gulp.task('build:scripts', function() {
     
        var jsTasks = lazypipe()
+        .pipe(plumber)
         .pipe(uglify)
         .pipe(gulp.dest, paths.scripts.output);
         

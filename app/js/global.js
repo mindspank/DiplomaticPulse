@@ -12,7 +12,6 @@
 }(jQuery));
 
 /** ROUTER **/
-
 var router = new PathParser();
 router.add('home', function () {
   $('#main').load('static/partials/dashboard.html', function() {
@@ -65,22 +64,25 @@ var QIX = {
 
 QIX.connect(function() {
   router.run('home');
+  
+  /** Resize **/
+  $(window).on('resize', debounce(function() {
+    pubsub.publish('resize');
+  }, 500));
+  
+  /** INTRO MODAL **/
+  if( Intro.getData() ) {
+    Intro.show();
+  };
+  
+  $('#modal-toggle').on('click', function() {
+    Intro.hide();
+  });
+  
+  $('#menu-button').on('click', function() {
+    $('#sidebar').toggle();
+  });
+  
+  var input = new Search($('#qv-search'));
+  
 });
-
-/** Resize **/
-$(window).on('resize', debounce(function() {
-  pubsub.publish('resize');
-}, 500));
-
-/** INTRO MODAL **/
-if( Intro.getData() ) {
-  Intro.show();
-};
-
-$('#modal-toggle').on('click', function() {
-  Intro.hide();
-})
-
-$('#menu-button').on('click', function() {
-  $('#sidebar').toggle();
-})

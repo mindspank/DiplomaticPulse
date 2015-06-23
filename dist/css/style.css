@@ -324,6 +324,7 @@ body {
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
+  min-height: 0;
 }
 #diplomaticpulse-container #sidebar {
   max-width: 200px;

@@ -58,7 +58,7 @@ function WordCloud(dimension, expression, element) {
 		cube.getLayout().then(function(layout) {
 			
 			svg.attr("width", w).attr("height", h);
-			svg.selectAll('text').remove();
+			
 
 			if(layout.qHyperCube.qDataPages[0].qMatrix[0][0].qIsEmpty) {
 				
@@ -123,6 +123,7 @@ function WordCloud(dimension, expression, element) {
 				.start();
 
 			function draw(data, bounds, qv) {
+				svg.selectAll('text').remove();
 				scale = bounds ? Math.min(
 					w / Math.abs(bounds[1].x - w / 2),
 					w / Math.abs(bounds[0].x - w / 2),
