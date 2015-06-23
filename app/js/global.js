@@ -76,6 +76,11 @@ QIX.connect(function() {
   };
   
   $('#modal-toggle').on('click', function() {
+    if( $('#dontshow').is(':checked') ) {
+      Intro.setData(false);
+    } else {
+      Intro.setData(true);
+    };
     Intro.hide();
   });
   

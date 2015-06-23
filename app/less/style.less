@@ -54,22 +54,32 @@ body {
       flex: 0 0 50px;
       position: relative;
       z-index: 1;
-      display: inline;
+      display: flex;
       background-color: #fff;
       border-bottom: rgba(0, 0, 0, 0.2) 1px solid;
       box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 
       input {
+        flex: 1;
         height: 49px;
         float: left;
-        width: 100%;
-        max-width: 700px;
         padding-left: 50px;
         outline: none;
         border: 0;
         font-size: 16px;
         color: #b3b3b3;
-      };
+      }
+      
+      button {
+        flex: 0 0 100px;
+        align-self: flex-end;
+        margin: 10px 40px 10px 10px;
+        
+        @media @tablet {
+          margin: 10px;
+        }
+        
+      }
 
       .magnifying-glass {
         position: absolute;

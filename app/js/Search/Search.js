@@ -68,7 +68,7 @@ var Search = (function() {
     40: 'down',
     32: 'space'
   };
-
+  
   function Search(element, field) {
 
     var that = this;
@@ -128,8 +128,26 @@ var Search = (function() {
       });
       
     },
+    clear: function() {
+      var input = document.getElementById('qv-search');
+      if(input.value.length === 0) return;
+      
+      this.q.getField('teaser').then(function(f) { 
+          f.clear().then(function() {
+            input.value = '';
+            pubsub.publish('update');
+          });
+      });
+    },
     init: function() {
+           
       this.bindevents();
+      
+      var clearbutton = document.getElementById('qv-search-clear');
+      clearbutton.addEventListener('click', function() {
+        this.clear();
+      }.bind(this), false)
+      
     }
   };
 
