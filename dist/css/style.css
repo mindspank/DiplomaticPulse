@@ -771,6 +771,7 @@ body {
   padding: 20px;
   background-color: #fff;
   margin-top: 20px;
+  overflow-x: auto;
 }
 #main.export .exportarea table {
   font-size: 13px;

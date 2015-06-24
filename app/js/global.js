@@ -1,17 +1,8 @@
-(function($) {
-    $.fn.invisible = function() {
-        return this.each(function() {
-            $(this).css("visibility", "hidden");
-        });
-    };
-    $.fn.visible = function() {
-        return this.each(function() {
-            $(this).css("visibility", "visible");
-        });
-    };
-}(jQuery));
+/* global Intro */
+
 
 /** ROUTER **/
+/* Add new routes here */
 var router = new PathParser();
 router.add('home', function () {
   $('#main').load('static/partials/dashboard.html', function() {
@@ -27,17 +18,17 @@ router.add('export', function () {
     });
 });
 
+/** Set up navigation. Append data-nav to your list items.  **/
 $('#navigation li').on('click', function() {
   if($(this).hasClass('active')) return;
   pubsub.publish('kill')
   $('#navigation li').removeClass('active');
   $(this).addClass('active');
   router.run($(this).data('nav'))
-})
+});
 
 
 /** QSOCKS CONFIGS  **/
-
 var QIX = {
   global: null,
   app: null,
@@ -62,6 +53,7 @@ var QIX = {
   }
 };
 
+/** App Entry Point **/
 QIX.connect(function() {
   router.run('home');
   
@@ -71,15 +63,15 @@ QIX.connect(function() {
   }, 500));
   
   /** INTRO MODAL **/
-  if( Intro.getData() ) {
+  if( !Intro.getData() ) {
     Intro.show();
   };
   
   $('#modal-toggle').on('click', function() {
     if( $('#dontshow').is(':checked') ) {
-      Intro.setData(false);
-    } else {
       Intro.setData(true);
+    } else {
+      Intro.setData(false);
     };
     Intro.hide();
   });
@@ -88,6 +80,7 @@ QIX.connect(function() {
     $('#sidebar').toggle();
   });
   
+  //Set up Search
   var input = new Search($('#qv-search'));
   
 });

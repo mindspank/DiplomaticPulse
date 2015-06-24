@@ -94,8 +94,10 @@ var Search = (function() {
       //Break on special keys
       if( specialKeyCodeMap[e.keyCode] || specialKeyCodeMap[e.which] ) return false;
       if( e.currentTarget.value.length == 0 ) {
-        return this.q.getField('teaser').then(function(f) { 
-          f.clear().then(function() { pubsub.publish('update') })
+        this.q.getField('teaser').then(function(f) { 
+          f.clear().then(function() { 
+            $('#main').fadeTo(50,0.5).fadeTo(200,1);
+            pubsub.publish('update') })
          });
       }
      
@@ -124,6 +126,7 @@ var Search = (function() {
       
       var searchTerm = term.split(' ');
       this.q.selectAssociations({qSearchFields: ['teaser']}, searchTerm, 0, true).then(function(results) {
+        $('#main').fadeTo(50,0.5).fadeTo(200,1);
         pubsub.publish('update');
       });
       
@@ -135,6 +138,7 @@ var Search = (function() {
       this.q.getField('teaser').then(function(f) { 
           f.clear().then(function() {
             input.value = '';
+            $('#main').fadeTo(50,0.5).fadeTo(200,1);
             pubsub.publish('update');
           });
       });

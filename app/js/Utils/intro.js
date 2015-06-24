@@ -9,7 +9,7 @@
       keyName: keyName,
       getData: function() {
         if(!localStorage.hasOwnProperty(keyName)) {
-          localStorage.setItem(keyName, 'true');
+          localStorage.setItem(keyName, 'false');
         }; 
         return JSON.parse(localStorage.getItem(keyName));
       },
@@ -18,11 +18,19 @@
       },
       show: function() {
         if(global.matchMedia("(max-width: 675px)").matches) return;
+        
+        if( this.getData() ) {
+          $('#intro input').prop('checked', true);
+        };
+        
         $('#intro').css('display', 'flex').animate({
           opacity: 1
         }, 'fast');
       },
       hide: function() {
+        
+        this.setData( $('#intro input').prop('checked') );
+        
         $('#intro').animate({
           opacity: 0
         }, 'fast', function() {
