@@ -17,6 +17,18 @@ router.add('export', function () {
        $.getScript('js/export.js')
     });
 });
+router.add('wsError', function () {
+    $('#main').removeClass().addClass('export').load('static/partials/wsError.html', function() {
+       $("#sidebar, #search").hide();
+    });
+});
+
+
+
+
+if( typeof(WebSocket) != "function" ) {
+ router.run("wsError");
+}else{
 
 /** Set up navigation. Append data-nav to your list items.  **/
 $('#navigation li').on('click', function() {
@@ -26,7 +38,6 @@ $('#navigation li').on('click', function() {
   $(this).addClass('active');
   router.run($(this).data('nav'))
 });
-
 
 /** QSOCKS CONFIGS  **/
 var QIX = {
@@ -84,3 +95,4 @@ QIX.connect(function() {
   var input = new Search($('#qv-search'));
   
 });
+}
