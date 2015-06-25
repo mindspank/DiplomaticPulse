@@ -35,7 +35,7 @@ var QIX = {
   config: {
     host: 'diplomaticpulse.qlik.com',
     isSecure: true,
-    appname: 'cb5bd147-7d74-4edd-9e2a-1d16e63906ae'
+    appname: 'b7e0c43f-e6bf-4c80-99fc-2ed79cd91337'
   },
   connect: function(cb) {
 

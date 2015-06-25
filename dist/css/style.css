@@ -535,35 +535,40 @@ body {
 #sidebar #filter-container div.filter .items ul li p {
   margin: 0;
 }
-#sidebar #filter-container #DateRange {
+#sidebar #filter-container #Time {
   -webkit-order: 1;
       -ms-flex-order: 1;
           order: 1;
 }
-#sidebar #filter-container #content_type {
+#sidebar #filter-container #ContentType {
   -webkit-order: 2;
       -ms-flex-order: 2;
           order: 2;
 }
-#sidebar #filter-container #entity_type {
+#sidebar #filter-container #MemberState {
   -webkit-order: 3;
       -ms-flex-order: 3;
           order: 3;
 }
-#sidebar #filter-container #entity_name {
+#sidebar #filter-container #IntOrganization {
   -webkit-order: 4;
       -ms-flex-order: 4;
           order: 4;
 }
-#sidebar #filter-container #Sub-Region {
+#sidebar #filter-container #UNSystems {
+  -webkit-order: 5;
+      -ms-flex-order: 5;
+          order: 5;
+}
+#sidebar #filter-container #Region {
   -webkit-order: 6;
       -ms-flex-order: 6;
           order: 6;
 }
-#sidebar #filter-container #Region {
-  -webkit-order: 5;
-      -ms-flex-order: 5;
-          order: 5;
+#sidebar #filter-container #Sub-Region {
+  -webkit-order: 7;
+      -ms-flex-order: 7;
+          order: 7;
 }
 #content {
   border-top: 1px solid #eee;

@@ -15,10 +15,11 @@ $('#clearfilter').on('click', function() {
  */
 var container = document.getElementById('filter-container');
 
-var date = Filter('DateRange', 'Time', container);
-var contentType = new Filter('content_type', 'Content Type', container);
-var orgType = new Filter('entity_type', 'Member Type', container);
-var org = new Filter('entity_name', 'Member State', container, true);
+var date = new Filter('DateRange', 'Time', container);
+var contentType = new Filter('Content Type', 'Content Type', container);
+var org = new Filter("=If([Entity Type] = 'Member State', [Entity Name])", 'Member State', container, true);
+var intorg = new Filter("=If([Entity Type] = 'International Organization', [Entity Name])", 'Int. Organization', container, true);
+var un = new Filter("=If([Entity Type] = 'United Nations System', [Entity Name])", 'UN Systems', container, true);
 var region = new Filter('Region', 'Region', container);
 var subregion = new Filter('Sub-Region', 'Sub-Region', container);
 
@@ -30,22 +31,22 @@ var mapdefinition = [{
   'dim': 'ISO2',
   'label': 'ISO Code'
 }, {
-  'dim': 'entity_name',
+  'dim': 'Entity Name',
   'label': 'Member State'
 }];
 
-var worldmap2 = new WorldMap(mapdefinition, '=Count({<entity_type={"Member State"}>}[AIE_DOCID])', document.getElementById('worldmapsmall'));
+var worldmap2 = new WorldMap(mapdefinition, '=Sum({<[Entity Type]={"Member State"}>}[ContentCounter])', document.getElementById('worldmapsmall'));
 
 /* Wordcloud */
-var hashtags = new WordCloud('hashtags', '=Count({<content_type=>}[AIE_DOCID])', document.getElementById('wordcloud'));
+var hashtags = new WordCloud('hashtags', '=Sum({<[Content Type]=>}[HashtagCounter])', document.getElementById('wordcloud'));
 
 /* Tweet Table */
 var tweettable = new Table([{
-  'dim': 'entity_name',
+  'dim': '"Entity Name"',
   'label': 'Member State'
 }], {
   'label': 'Web and Tweets',
-  'value': '=Count({<entity_type={"Member State"}>}[AIE_DOCID])'
+  'value': '=Sum({<entity_type={"Member State"}>}[ContentCounter])'
 }, document.getElementById('tweettable'));
 
 /* Mentions Table */
@@ -54,18 +55,19 @@ var mentions = new Table([{
   'label': 'Mentioned'
 }], {
   'label': 'Number of mentions',
-  'value': '=Count([AIE_DOCID])'
+  'value': 'Sum(MentionCounter)'
 }, document.getElementById('mentiontable'));
 
 /* Clean up */
 pubsub.subscribe('kill', function() {
   date = null;
   contentType = null;
-  orgType = null;
   org = null;
-  region = null;
-  subregion = null;
+  intorg = null;
+  un = null;
   worldmap2 = null;
   tweettable = null;
   mentions = null;
+  region = null;
+  subregion = null;
 })

@@ -22,7 +22,7 @@ function Filter(field, label, element, shouldsearch) {
   var openState = false;
   var searchable = shouldsearch || false;
 
-  var tmpl = '<div id="' + field + '" class="filter">';
+  var tmpl = '<div id="' + label.replace(/\s+/g, '').replace(/\./g, '') + '" class="filter">';
   tmpl += '<div class="title">' + label;
   tmpl += '  <div class="right"><div class="count"></div><img src="static/img/toggle.svg"></div>';
   tmpl += '</div>';
