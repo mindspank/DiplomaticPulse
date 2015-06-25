@@ -28,7 +28,7 @@ function ContentTable(fieldlist, element) {
     },
     "qHyperCubeDef": {
       "qDimensions": dimensionList,
-      "qInterColumnSortOrder": [5],
+      "qInterColumnSortOrder": [2],
       "qInitialDataFetch": [{
           qTop: 0,
           qLeft: 0,
@@ -55,11 +55,17 @@ function ContentTable(fieldlist, element) {
 
       var items = layout.qHyperCube.qDataPages[0].qMatrix;
 
-      items.forEach(function(column) {
-        if (column[1].qIsEmpty) {
+      items.forEach(function(d) {
+        if (d[1].qIsEmpty) {
           return;
-        }
-        var $row = createRow(column);
+        };
+        
+        var $row;
+        if( d[0].qText === 'Twitter' ) {
+          $row = createTweetRow(d);
+        } else {
+          $row = createWebRow(d);
+        };
         $row.appendTo($rows);
       });
 
@@ -88,31 +94,84 @@ function ContentTable(fieldlist, element) {
       data[0].qMatrix.forEach(function(d) {
         if (d[1].qIsEmpty) {
           return;
-        }
-        var $row = createRow(d);
+        };
+        
+        var $row;
+        if( d[0].qText === 'Twitter' ) {
+          $row = createTweetRow(d);
+        } else {
+          $row = createWebRow(d);
+        };
+
         $row.appendTo($rows);
-      })
+        
+      });
 
     })
 
   };
 
 
+//'Source', 'URL', 'doctype', 'favorites', 'retweets', 'mediaURL'
+
   //Return a content row - jquery object
-  function createRow(d) {
+  function createTweetRow(d) {
 
     var $row = $('<div class="item" />');
-    var type = d[0].qText == 'Web' ? 'fa-cloud' : 'fa-twitter';
 
-    $('<div class="info"><i class="fa '+ type + '"></i>&nbsp;&nbsp;' + d[4].qText + spacer + d[5].qText.substring(0,16) + '</div>').appendTo($row);
-    $('<div class="body">' + d[2].qText + '</div>').appendTo($row);
+    $('<div class="info"><i class="fa fa-twitter"></i>&nbsp;&nbsp;' + d[1].qText + spacer + d[2].qText.substring(0,17) + '</div>').appendTo($row);
+    $('<div class="body">' + d[3].qText + '</div>').appendTo($row);
+    
+    var detailsTmpl = '<div class="details" style="display: none;"><img style="display: none;width: 100%;"></img><div class="details-bar">';
+    detailsTmpl += '<ul><li class="retweet">RETWEETS <strong>' + d[8].qText + '</strong>';
+    detailsTmpl += '</li><li class="favorite">FAVORITES <strong>' + d[7].qText + '</strong></li>'
+    detailsTmpl += '<li class="handle">TWITTER HANDLE <strong>' + d[4].qText.substring(1) + '</strong></li><li></li></ul>';
+    detailsTmpl += '<a target="_blank" href="' + d[5].qText + '">Read on Twitter</a><a target="_blank" href="https://twitter.com/' + d[4].qText + '">View Twitter profile</a></div>';
+    
+    var $details = $(detailsTmpl);
+    
+    //mediaUUL
+    if(d[9].qText != '-') {
+      $row.find('.info').append('<i class="fa fa-picture-o"></i>')
+      $details.find('img').attr('src', d[9].qText).show();
+    };
+    
+    $details.appendTo($row);
+    
+    $row.on('click', function(e) {
+      if(e.target.nodeName == 'A') return null;
+      $(this).find('.details').slideToggle('fast');
+    });
+    
+    return $row;
+  };
+  
+  //Return a content row - jquery object
+  function createWebRow(d) {
 
+    var $row = $('<div class="item" />');
+
+    $('<div class="info"><i class="fa fa-cloud"></i>&nbsp;&nbsp;' + d[1].qText + spacer + d[2].qText.substring(0,17) + '</div>').appendTo($row);
+    $('<div class="body">' + d[3].qText + '</div>').appendTo($row);
+
+    var detailsTmpl = '<div class="details" style="display: none;"><div class="details-bar">';
+    detailsTmpl += '<ul><li class="documenttype">DOCUMENT TYPE <strong>' + d[6].qText + '</strong></li></ul>';
+    detailsTmpl += '<a target="_blank" href="' + d[5].qText + '">Read document</a><a target="_blank" href="//' + d[4].qText + '">Visit source site</a>';
+    detailsTmpl += '</div></div>';
+    var $details = $(detailsTmpl);
+    
+    $details.appendTo($row);
+    
+    $row.on('click', function() {
+      $(this).find('.details').slideToggle('fast');
+    });
+    
     return $row;
   };
 
   var update = pubsub.subscribe('update', render);
   pubsub.subscribe('kill', function() {
-    pubsub.unsubscribe(update)
+    pubsub.unsubscribe(update);
   });
 
   //Page on more

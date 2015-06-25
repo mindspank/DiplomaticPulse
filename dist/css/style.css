@@ -732,9 +732,60 @@ body {
 #content #main .table-tweets .rows .item .info .fa-twitter {
   color: #0084B4;
 }
+#content #main .table-tweets .rows .item .info .fa-picture-o {
+  padding-left: 10px;
+}
 #content #main .table-tweets .rows .item .body {
   font-size: 13px;
   line-height: 22px;
+}
+#content #main .table-tweets .rows .item .details {
+  padding: 20px 20px 0 20px;
+  min-height: 90px;
+}
+#content #main .table-tweets .rows .item .details img {
+  margin-bottom: 20px;
+  max-width: 400px;
+  height: auto;
+}
+#content #main .table-tweets .rows .item .details .details-bar {
+  min-height: 90px;
+}
+#content #main .table-tweets .rows .item .details ul {
+  list-style: none;
+  margin: 0;
+  float: left;
+  width: 100%;
+  border-top: 1px solid #e1e8ed;
+  border-bottom: 1px solid #e1e8ed;
+}
+#content #main .table-tweets .rows .item .details a {
+  padding-top: 10px;
+  margin-right: 20px;
+  float: left;
+}
+#content #main .table-tweets .rows .item .details li {
+  float: left;
+  display: block;
+  margin-right: 10px;
+  overflow: hidden;
+  min-width: 72px;
+  padding: 5px 0;
+}
+#content #main .table-tweets .rows .item .details li strong {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  color: 000;
+}
+#content #main .table-tweets .rows .item .details li.retweet,
+#content #main .table-tweets .rows .item .details li.favorite,
+#content #main .table-tweets .rows .item .details li.handle,
+#content #main .table-tweets .rows .item .details li.documenttype {
+  color: #8899a6;
+  font-size: 10px;
+  line-height: 16px;
 }
 #content #main .table-tweets #more {
   float: left;

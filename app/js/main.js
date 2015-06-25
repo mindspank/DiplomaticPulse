@@ -23,7 +23,7 @@ var un = new Filter("=If([Entity Type] = 'United Nations System', [Entity Name])
 var region = new Filter('Region', 'Region', container);
 var subregion = new Filter('Sub-Region', 'Sub-Region', container);
 
-var contenttable = new ContentTable(['content_type', 'content_type', 'teaser', 'uri', 'entity_name', 'Timestamp', 'entity_name', 'entity_type'], $('.table-tweets'));
+var contenttable = new ContentTable(['Content Type', 'Entity Name', 'Timestamp', 'teaser', 'Source', 'URL', 'doctype', 'favorites', 'retweets', 'mediaURL'], $('.table-tweets'));
 
 
 /*  Map */

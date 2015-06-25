@@ -125,7 +125,7 @@ var Search = (function() {
       };
       
       var searchTerm = term.split(' ');
-      this.q.selectAssociations({qSearchFields: ['teaser']}, searchTerm, 0, true).then(function(results) {
+      this.q.selectAssociations({qSearchFields: ['teaser'], qContext: 'CurrentSelections'}, searchTerm, 0).then(function(results) {
         $('#main').fadeTo(50,0.5).fadeTo(200,1);
         pubsub.publish('update');
       });

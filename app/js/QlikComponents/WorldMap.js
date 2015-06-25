@@ -105,9 +105,13 @@ function WorldMap(dimensions, expression, element) {
 			var max = layout.qHyperCube.qMeasureInfo[0].qMax;
 			var min = layout.qHyperCube.qMeasureInfo[0].qMin;
 
-			var radius = d3.scale.sqrt()
-				.domain([0, max])
-				.range([0, 25]);
+			var radius;
+
+			if( width < 300) {
+				radius = d3.scale.sqrt().domain([0, max]).range([0, 15]);
+			} else {
+				radius = d3.scale.sqrt().domain([0, max]).range([0, 25]);
+			};
 
 			data = {};
 
