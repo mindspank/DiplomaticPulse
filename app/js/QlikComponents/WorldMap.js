@@ -108,9 +108,9 @@ function WorldMap(dimensions, expression, element) {
 			var radius;
 
 			if( width < 300) {
-				radius = d3.scale.sqrt().domain([0, max]).range([0, 15]);
+				radius = d3.scale.sqrt().domain([min, max]).range([0, 15]);
 			} else {
-				radius = d3.scale.sqrt().domain([0, max]).range([0, 25]);
+				radius = d3.scale.sqrt().domain([min, max]).range([0, 25]);
 			};
 
 			data = {};

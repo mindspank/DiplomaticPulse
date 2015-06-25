@@ -838,6 +838,22 @@ body {
   overflow: hidden;
   max-width: 120px;
 }
+#main.unsupported .browserwrap {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: no-wrap;
+      -ms-flex-wrap: no-wrap;
+          flex-wrap: no-wrap;
+}
+#main.unsupported .browserwrap .browser {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
 #suggestions {
   position: absolute;
   top: 50px;
