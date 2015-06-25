@@ -1,18 +1,40 @@
 @import (reference) 'variables.less';
 
 #UNSUPPORTED() {
-	#main.unsupported {
+	#diplomaticpulse-container #main.unsupported {
+		
+		flex-direction: column !important;
+		align-items: center;
+		
+		.titlesection {
+			background-color: #fff;
+			padding: 20px;
+		}
 		
 		.browserwrap {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: no-wrap;
+			margin-top: 40px;
 			
 			.browser {
 				flex: 1;
+				img {
+					display: block;
+					max-width: 100%;
+					height: auto;
+					margin: 0;
+				}
 			}
 			
 		}
 		
 	}
+	
+	@media @tablet {
+		#menu-button {
+			display: none !important;
+		}
+	}
+	
 };

@@ -838,7 +838,19 @@ body {
   overflow: hidden;
   max-width: 120px;
 }
-#main.unsupported .browserwrap {
+#diplomaticpulse-container #main.unsupported {
+  -webkit-flex-direction: column !important;
+      -ms-flex-direction: column !important;
+          flex-direction: column !important;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#diplomaticpulse-container #main.unsupported .titlesection {
+  background-color: #fff;
+  padding: 20px;
+}
+#diplomaticpulse-container #main.unsupported .browserwrap {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -848,11 +860,23 @@ body {
   -webkit-flex-wrap: no-wrap;
       -ms-flex-wrap: no-wrap;
           flex-wrap: no-wrap;
+  margin-top: 40px;
 }
-#main.unsupported .browserwrap .browser {
+#diplomaticpulse-container #main.unsupported .browserwrap .browser {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+#diplomaticpulse-container #main.unsupported .browserwrap .browser img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+}
+@media only screen and (max-width: 1000px) {
+  #menu-button {
+    display: none !important;
+  }
 }
 #suggestions {
   position: absolute;

@@ -26,7 +26,7 @@ router.add('wsError', function () {
 
 
 
-if( typeof(WebSocket) != "function" ) {
+if( typeof(WebSocket) !== "function" ) {
  router.run("wsError");
 } else {
 
@@ -95,4 +95,4 @@ if( typeof(WebSocket) != "function" ) {
     var input = new Search($('#qv-search'));
     
   });
-}
+};
