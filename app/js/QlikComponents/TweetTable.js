@@ -119,7 +119,7 @@ function ContentTable(fieldlist, element) {
 
     var $row = $('<div class="item" />');
 
-    $('<div class="info"><i class="fa fa-twitter"></i>&nbsp;&nbsp;' + d[1].qText + spacer + d[2].qText.substring(0,17) + '</div>').appendTo($row);
+    $('<div class="info"><i class="fa fa-twitter"></i>&nbsp;&nbsp;' + d[1].qText + spacer + d[2].qText + '</div>').appendTo($row);
     $('<div class="body">' + d[3].qText + '</div>').appendTo($row);
     
     var detailsTmpl = '<div class="details" style="display: none;"><img style="display: none;width: 100%;"></img><div class="details-bar">';

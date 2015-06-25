@@ -16,7 +16,7 @@ function WordCloud(dimension, expression, element) {
 	var max,
 		min,
 		scale = 1,
-		maxFont = 32;
+		maxFont = 42;
 
 	QIX.app.createSessionObject({
 		"qInfo": {
@@ -45,7 +45,7 @@ function WordCloud(dimension, expression, element) {
 			"qInitialDataFetch": [{
 				qTop: 0,
 				qLeft: 0,
-				qHeight: 40,
+				qHeight: 50,
 				qWidth: 2
 			}]
 		}
@@ -59,7 +59,6 @@ function WordCloud(dimension, expression, element) {
 			
 			svg.attr("width", w).attr("height", h);
 			
-
 			if(layout.qHyperCube.qDataPages[0].qMatrix[0][0].qIsEmpty) {
 				
 				svg.append('text')
@@ -113,9 +112,7 @@ function WordCloud(dimension, expression, element) {
 						return maxFont;
 					}
 				})
-				.rotate(function() {
-					return 0;
-				})
+				.rotate(0)
 				.text(function(d) {
 					return d.key;
 				})
@@ -134,14 +131,7 @@ function WordCloud(dimension, expression, element) {
 					.data(data, function(d) {
 						return d.text;
 					});
-				text.transition()
-					.duration(1000)
-					.attr("transform", function(d) {
-						return "translate(" + [d.x, d.y] + ")";
-					})
-					.style("font-size", function(d) {
-						return fontSize(d.value) + "px";
-					});
+
 				text.enter().append("text")
 					.on("click", function(d) {
 						select(d.qElem);

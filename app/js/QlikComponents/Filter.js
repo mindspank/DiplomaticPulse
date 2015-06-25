@@ -1,4 +1,4 @@
-(function($) {
+ (function($) {
     $.fn.invisible = function() {
         return this.each(function() {
             $(this).css("visibility", "hidden");
@@ -21,15 +21,16 @@ function Filter(field, label, element, shouldsearch) {
   var selectedState = false;
   var openState = false;
   var searchable = shouldsearch || false;
+  var labeltrim = label.replace(/\s+/g, '').replace(/\./g, '');
 
-  var tmpl = '<div id="' + label.replace(/\s+/g, '').replace(/\./g, '') + '" class="filter">';
+  var tmpl = '<div id="' + labeltrim + '" class="filter">';
   tmpl += '<div class="title">' + label;
   tmpl += '  <div class="right"><div class="count"></div><img src="static/img/toggle.svg"></div>';
   tmpl += '</div>';
   tmpl += '<div class="items"></div>';
   tmpl += '</div>';
 
-  var $div = existsInDOM ? $('#' + field) : $(tmpl);
+  var $div = existsInDOM ? $('#' + labeltrim) : $(tmpl);
   var $items = $div.find('.items');
   var $title = $div.find('.title');
   var $count = $div.find('.count');
@@ -109,11 +110,11 @@ function Filter(field, label, element, shouldsearch) {
   }
 
   function searchList() {
-    if($('#' + field).find('.search').length === 0 ) {
-      $('#' + field).find('.items').before('<input class="search" placeholder="Search list"/>')
+    if($('#' + labeltrim).find('.search').length === 0 ) {
+      $('#' + labeltrim).find('.items').before('<input class="search" placeholder="Search list"/>')
     }
 
-    var s = new List(field, {
+    var s = new List($('#' + labeltrim), {
       valueNames: ['value']
     });
   };

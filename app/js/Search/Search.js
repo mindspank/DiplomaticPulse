@@ -66,7 +66,9 @@ var Search = (function() {
     13: 'enter',
     38: 'up',
     40: 'down',
-    32: 'space'
+    32: 'space',
+    16: 'shift',
+    17: 'ctrl'
   };
   
   function Search(element, field) {
