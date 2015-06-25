@@ -42,11 +42,11 @@ var hashtags = new WordCloud('hashtags', '=Sum({<[Content Type]=>}[HashtagCounte
 
 /* Tweet Table */
 var tweettable = new Table([{
-  'dim': '"Entity Name"',
+  'dim': 'Entity Name',
   'label': 'Member State'
 }], {
   'label': 'Web and Tweets',
-  'value': '=Sum({<entity_type={"Member State"}>}[ContentCounter])'
+  'value': '=Sum({<[Entity Type]={"Member State"}>}[ContentCounter])'
 }, document.getElementById('tweettable'));
 
 /* Mentions Table */
