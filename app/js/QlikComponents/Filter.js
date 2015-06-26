@@ -114,7 +114,7 @@ function Filter(field, label, element, shouldsearch) {
       $('#' + labeltrim).find('.items').before('<input class="search" placeholder="Search list"/>')
     }
 
-    var s = new List($('#' + labeltrim), {
+    var s = new List(document.getElementById(labeltrim), {
       valueNames: ['value']
     });
   };
