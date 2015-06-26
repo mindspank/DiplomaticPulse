@@ -122,8 +122,10 @@ function Filter(field, label, element, shouldsearch) {
   function select(qElem) {
     list.selectListObjectValues("/qListObjectDef", [+qElem], field == 'DateRange' ? false : true, false).then(function(success) {
       $('#clearfilter').addClass('active');
-      pubsub.publish('update')
-    })
+      pubsub.publish('update');
+    }, function(error) {
+      console.log(error);
+    });
   }
 
   var update = pubsub.subscribe('update', render);

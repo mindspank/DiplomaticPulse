@@ -141,6 +141,9 @@ function WorldMap(dimensions, expression, element) {
 					return path.centroid(d)[1];
 				})
 				.attr("r", function(d) {
+					if(layout.qHyperCube.qDataPages[0].qMatrix.length === 1) {
+						return 10;	
+					};
 					return radius(data[d.id].value);
 				})
 				.on('mouseover', tip.show)
@@ -188,46 +191,13 @@ function WorldMap(dimensions, expression, element) {
 	function select(qElem) {
 		cube.selectHyperCubeValues('/qHyperCubeDef', 0, [qElem], true).then(function(success) {
 			pubsub.publish('update');
-		})
-
-	}
-
-	function pageData() {
-		index += qHeightValue;
-
-		var pages = {
-			qTop: index,
-			qLeft: 0,
-			qHeight: qHeightValue,
-			qWidth: dimensionList.length + 1
-		}
-
-		//For some reason pages has to wrapped in a array
-		cube.getHyperCubeData('/qHyperCubeDef', [pages]).then(function(data) {
-
-			if (data[0].qMatrix.length < qHeightValue) {
-				$('.more').hide();
-			}
-
-			data[0].qMatrix.forEach(function(d) {
-				if (d[1].qIsEmpty) {
-					return;
-				}
-				var $row = createRow(d);
-				$row.insertBefore($div);
-			})
-
-			var subtitletext = 'Showing ' + $('.item').length + ' out of ' + maxIdx + ' rows of content';
-			$('.contentItems .chart-subtitle').text(subtitletext);
-			$('#sidebar').fixTo('refresh');
-		})
-
+		});
 	};
 
-	  var update = pubsub.subscribe('update', render);
-	  pubsub.subscribe('kill', function() {
-	    pubsub.unsubscribe(update)
-	  });
+  var update = pubsub.subscribe('update', render);
+  pubsub.subscribe('kill', function() {
+    pubsub.unsubscribe(update)
+  });
 	pubsub.subscribe('resize', resize);
 
 };

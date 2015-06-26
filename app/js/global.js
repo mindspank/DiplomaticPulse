@@ -60,7 +60,7 @@ if( typeof(WebSocket) !== "function" ) {
         })
       }, function(error) {
         console.log(error)
-      })
+      });
     }
   };
   
