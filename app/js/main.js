@@ -1,3 +1,4 @@
+/* global Table */
 $('#filter-container').empty();
 
 /* Clear selections in filters */
@@ -58,6 +59,10 @@ var mentions = new Table([{
   'value': 'Sum(MentionCounter)'
 }, document.getElementById('mentiontable'));
 
+/* Line Chart */
+var linechart = new Linechart('Date','=Sum({<DateRange=>}ContentCounter)', document.getElementById('linechart'));
+
+
 /* Clean up */
 pubsub.subscribe('kill', function() {
   date = null;
@@ -70,4 +75,5 @@ pubsub.subscribe('kill', function() {
   mentions = null;
   region = null;
   subregion = null;
+  linechart = null;
 })

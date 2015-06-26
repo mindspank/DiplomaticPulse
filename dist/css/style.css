@@ -146,6 +146,18 @@ p.section-title {
 .three-col-table table .col3 {
   width: 10%;
 }
+#linechart .axis path,
+#linechart .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+#linechart .x.axis path {
+  display: none;
+}
+#linechart .tick text {
+  font-size: 12px;
+}
 body {
   font-family: Roboto, sans-serif;
   background-color: #f1f1f1;
@@ -656,6 +668,9 @@ body {
   -webkit-flex: 1 1 450px;
       -ms-flex: 1 1 450px;
           flex: 1 1 450px;
+}
+#content #main .section-right .part.linechart {
+  min-height: 200px;
 }
 @media only screen and (max-width: 1000px) {
   #content #main .section-right .part {

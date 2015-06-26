@@ -27,7 +27,11 @@ function WordCloud(dimension, expression, element) {
 			"qDimensions": [{
 				"qNullSuppression": true,
 				"qDef": {
-					"qFieldDefs": [dimension]
+					"qFieldDefs": [dimension],
+					"qFieldLabels": ['Test'],
+					"qSortCriterias": [{
+						"qSortByNumeric": -1
+					}]
 				}
 			}],
 			"qMeasures": [{
@@ -56,11 +60,11 @@ function WordCloud(dimension, expression, element) {
 
 	function render() {
 		cube.getLayout().then(function(layout) {
-			
+
 			svg.attr("width", w).attr("height", h);
-			
-			if(layout.qHyperCube.qDataPages[0].qMatrix[0][0].qIsEmpty) {
-				
+
+			if (layout.qHyperCube.qDataPages[0].qMatrix[0][0].qIsEmpty) {
+
 				svg.append('text')
 					.attr("text-anchor", "middle")
 					.attr("transform", function(d) {
@@ -69,8 +73,9 @@ function WordCloud(dimension, expression, element) {
 					.style("font-size", '16px')
 					.style("fill", 'rgb(39, 48, 81)')
 					.text('No Hashtags Available');
+				
 				return;
-			}
+			};
 
 			max = d3.max(layout.qHyperCube.qDataPages[0].qMatrix.map(function(d) {
 				return d[1].qNum;
@@ -121,6 +126,7 @@ function WordCloud(dimension, expression, element) {
 
 			function draw(data, bounds, qv) {
 				svg.selectAll('text').remove();
+				
 				scale = bounds ? Math.min(
 					w / Math.abs(bounds[1].x - w / 2),
 					w / Math.abs(bounds[0].x - w / 2),
@@ -152,15 +158,13 @@ function WordCloud(dimension, expression, element) {
 					.text(function(d) {
 						return d.text;
 					});
-			}
-
-
-		})
-	}
+			};
+		});
+	};
 
 
 	function resize() {
-		if(w === element.offsetWidth) {
+		if (w === element.offsetWidth) {
 			return;
 		};
 
@@ -173,14 +177,14 @@ function WordCloud(dimension, expression, element) {
 	function select(qElem) {
 		cube.selectHyperCubeValues('/qHyperCubeDef', 0, [qElem], true).then(function(success) {
 			pubsub.publish('update');
-		})
-	}
+		});
+	};
 
 	var update = pubsub.subscribe('update', render);
-		pubsub.subscribe('kill', function() {
+	pubsub.subscribe('kill', function() {
 		pubsub.unsubscribe(update);
 	});
-	
-	var resizeEvent = pubsub.subscribe('resize', resize); 
+
+	var resizeEvent = pubsub.subscribe('resize', resize);
 
 };

@@ -146,3 +146,15 @@ p.section-title {
 .three-col-table table .col3 {
   width: 10%;
 }
+#linechart .axis path,
+#linechart .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+#linechart .x.axis path {
+  display: none;
+}
+#linechart .tick text {
+  font-size: 12px;
+}
