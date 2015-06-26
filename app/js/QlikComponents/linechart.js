@@ -88,11 +88,12 @@ function Linechart(dimension, expression, element) {
 
 	function render() {
 		cube.getLayout().then(function(layout) {
-			svg.selectAll('path, .axis').remove();
+			svg.selectAll('path, .axis, .error').remove();
 
 			if (layout.qHyperCube.qSize.qcy < 4) {
 
 				svg.append('text')
+					.attr('class', 'error')
 					.attr("text-anchor", "middle")
 					.attr("transform", function(d) {
 						return "translate(" + [element.offsetWidth / 2, element.offsetHeight / 2] + ")";
