@@ -1,15 +1,6 @@
 /* global Table */
 $('#filter-container').empty();
 
-/* Clear selections in filters */
-$('#clearfilter').on('click', function() {
-  var $this = $(this);
-  $('#qv-search').val('');
-  QIX.app.clearAll().then(function() {
-    pubsub.publish('update');
-  })
-});
-
 /*
  * Set up Filters
  * @params Field in data model, Label, DOM Element, Search
@@ -62,6 +53,15 @@ var mentions = new Table([{
 /* Line Chart */
 var linechart = new Linechart('Date','=Sum({<DateRange=>}ContentCounter)', document.getElementById('linechart'));
 
+/* Clear selections in filters */
+$('#clearfilter').on('click', function() {
+  var $this = $(this);
+  $('#qv-search-clear').hide();
+  $('#qv-search').val('');
+  QIX.app.clearAll().then(function() {
+    pubsub.publish('update');
+  })
+});
 
 /* Clean up */
 pubsub.subscribe('kill', function() {
