@@ -33,6 +33,8 @@ function Table(dimensions, expression, element) {
 					"qDef": expression.value
 				}
 			}],
+			"qSuppressMissing": true,
+			"qSuppressZero": true,
 			"qInterColumnSortOrder": [1, 0],
 			"qInitialDataFetch": [{
 				qTop: 0,

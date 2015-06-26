@@ -28,6 +28,8 @@ function ContentTable(fieldlist, element) {
     },
     "qHyperCubeDef": {
       "qDimensions": dimensionList,
+      "qSuppressMissing": true,
+			"qSuppressZero": true,
       "qInterColumnSortOrder": [2],
       "qInitialDataFetch": [{
           qTop: 0,

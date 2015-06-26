@@ -45,6 +45,8 @@ function WordCloud(dimension, expression, element) {
 					"qDef": expression
 				}
 			}],
+			"qSuppressMissing": true,
+			"qSuppressZero": true,
 			"qInterColumnSortOrder": [1, 0],
 			"qInitialDataFetch": [{
 				qTop: 0,
@@ -62,8 +64,9 @@ function WordCloud(dimension, expression, element) {
 		cube.getLayout().then(function(layout) {
 
 			svg.attr("width", w).attr("height", h);
+			svg.selectAll('*').remove();
 
-			if (layout.qHyperCube.qDataPages[0].qMatrix[0][0].qIsEmpty) {
+			if (layout.qHyperCube.qSize.qcy === 0) {
 
 				svg.append('text')
 					.attr("text-anchor", "middle")

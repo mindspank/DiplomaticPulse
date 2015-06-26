@@ -39,7 +39,7 @@ var mapdefinition = [{
 var worldmap2 = new WorldMap(mapdefinition, '=Sum({<[Entity Type]={"Member State"}>}[ContentCounter])', document.getElementById('worldmapsmall'));
 
 /* Wordcloud */
-var hashtags = new WordCloud('hashtags', '=Sum({<[Content Type]=>}[HashtagCounter])', document.getElementById('wordcloud'));
+var hashtags = new WordCloud('hashtags', 'Sum([HashtagCounter])', document.getElementById('wordcloud'));
 
 /* Tweet Table */
 var tweettable = new Table([{

@@ -71,6 +71,8 @@ function Linechart(dimension, expression, element) {
 					"qDef": expression
 				}
 			}],
+			"qSuppressMissing": true,
+			"qSuppressZero": true,
 			"qInterColumnSortOrder": [0, 1],
 			"qInitialDataFetch": [{
 				qTop: 0,
@@ -87,6 +89,20 @@ function Linechart(dimension, expression, element) {
 	function render() {
 		cube.getLayout().then(function(layout) {
 			svg.selectAll('path, .axis').remove();
+
+			if (layout.qHyperCube.qSize.qcy < 4) {
+
+				svg.append('text')
+					.attr("text-anchor", "middle")
+					.attr("transform", function(d) {
+						return "translate(" + [element.offsetWidth / 2, element.offsetHeight / 2] + ")";
+					})
+					.style("font-size", '16px')
+					.style("fill", 'rgb(39, 48, 81)')
+					.text('Not Enough Content Available');
+				
+				return null;
+			};
 			
 			data = layout.qHyperCube.qDataPages[0].qMatrix.filter(function(d) {
 				return d[0].qText.length && +d[1].qNum === (+d[1].qNum | 0);
@@ -116,8 +132,8 @@ function Linechart(dimension, expression, element) {
 			  .attr("class", "line")
 			  .attr("d", line)
 			  .style('fill', 'none')
-			  .style('stroke', 'steelblue')
-			  .style('stroke-width', '1.5px');
+			  .style('stroke', '#273051')
+			  .style('stroke-width', '3px');
 
 		});
 	};
