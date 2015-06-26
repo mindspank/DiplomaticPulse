@@ -618,6 +618,7 @@ body {
       -ms-flex-item-align: end;
           align-self: flex-end;
   margin: 10px 40px 10px 10px;
+  display: none;
 }
 @media only screen and (max-width: 1000px) {
   #content #search button {

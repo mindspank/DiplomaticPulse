@@ -96,6 +96,9 @@ var Search = (function() {
       //Break on special keys
       if( specialKeyCodeMap[e.keyCode] || specialKeyCodeMap[e.which] ) return false;
       if( e.currentTarget.value.length == 0 ) {
+        
+        $('#qv-search-clear').hide();
+        
         this.q.getField('teaser').then(function(f) { 
           f.clear().then(function() { 
             $('#main').fadeTo(50,0.5).fadeTo(200,1);
@@ -105,7 +108,8 @@ var Search = (function() {
      
       //Break on minimum length
       if( e.currentTarget.value.length < this.minChars ) return false;
-
+      
+      $('#qv-search-clear').show();
       this.doSearch(e.target.value);
       
     },
@@ -135,7 +139,10 @@ var Search = (function() {
     },
     clear: function() {
       var input = document.getElementById('qv-search');
+      var button = document.getElementById('qv-search-clear');
       if(input.value.length === 0) return;
+      
+      button.style.display = 'none';
       
       this.q.getField('teaser').then(function(f) { 
           f.clear().then(function() {
