@@ -1,6 +1,3 @@
-/* global Intro */
-
-
 /** ROUTER **/
 /* Add new routes here */
 var router = new PathParser();
@@ -9,14 +6,15 @@ router.add('home', function () {
     $.getScript('js/main.js');
   });
 });
-router.add('profile', function () {
-    $('#main').load('static/partials/profile.html');
-});
+
+/** Export functionality currently disabled due to bug in QS with anon users and exports **/
 router.add('export', function () {
     $('#main').removeClass().addClass('export').load('static/partials/export.html', function() {
        $.getScript('js/export.js')
     });
 });
+
+/** If browser does not support window.WebSocket **/
 router.add('wsError', function () {
     $('#main').removeClass().addClass('unsupported').load('static/partials/wsError.html', function() {
        $("#sidebar, #search").hide();
@@ -24,8 +22,7 @@ router.add('wsError', function () {
 });
 
 
-
-
+/** If browser is unsupport let user know. Otherwise set up nav and init app  **/
 if( typeof(WebSocket) !== "function" ) {
  router.run("wsError");
 } else {
@@ -40,6 +37,7 @@ if( typeof(WebSocket) !== "function" ) {
   });
   
   /** QSOCKS CONFIGS  **/
+  /** config object needs to be changed to match Qlik Sense host.  **/
   var QIX = {
     global: null,
     app: null,

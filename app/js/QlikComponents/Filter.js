@@ -1,4 +1,7 @@
- (function($) {
+/**
+ * jQuery plugin to toggle visibility on filter counters
+ */
+(function($) {
     $.fn.invisible = function() {
         return this.each(function() {
             $(this).css("visibility", "hidden");
@@ -23,6 +26,9 @@ function Filter(field, label, element, shouldsearch) {
   var searchable = shouldsearch || false;
   var labeltrim = label.replace(/\s+/g, '').replace(/\./g, '');
 
+  /**
+   * Filter HTML template
+   */
   var tmpl = '<div id="' + labeltrim + '" class="filter">';
   tmpl += '<div class="title">' + label;
   tmpl += '  <div class="right"><div class="count"></div><img src="static/img/toggle.svg"></div>';
@@ -35,10 +41,16 @@ function Filter(field, label, element, shouldsearch) {
   var $title = $div.find('.title');
   var $count = $div.find('.count');
 
+  /**
+   * Expand Filter on click.
+   */
   $title.on('click', function() {
     $(this).parent().toggleClass('expanded')
   });
 
+  /**
+   * Sort Filters alphabetically unless it's a date filter.
+   */
   var sort = field == 'DateRange' ? {
     "qSortByNumeric": 1
   } : {
@@ -46,6 +58,12 @@ function Filter(field, label, element, shouldsearch) {
     "qSortByAsci": 1
   };
 
+  /**
+   * Create the Qlik Sense Object
+   * https://help.qlik.com/sense/2.0/en-us/developer/Subsystems/EngineAPI/Content/GenericObject/PropertyLevel/ListObjectDef.htm
+   * 
+   * Returns a promise which will call render once it's fulfilled.
+   */
   QIX.app.createSessionObject({
     "qInfo": {
       "qId": "",
@@ -69,7 +87,10 @@ function Filter(field, label, element, shouldsearch) {
     render();
   });
 
-  function render(data) {
+  function render() {
+    /**
+     * Get the layout/data of the List Object
+     */
     list.getLayout().then(function(layout) {
       
       listId = layout.qInfo.qId; 
@@ -101,7 +122,10 @@ function Filter(field, label, element, shouldsearch) {
         $div.appendTo(element);
         existsInDOM = true;
       };
-
+      
+      /**
+       * If Filter should be searchable instanciate List.js
+       */
       if(searchable) searchList();
 
       $('input.search').val('')
@@ -109,6 +133,9 @@ function Filter(field, label, element, shouldsearch) {
     });
   }
 
+  /**
+   * Set up searchable lists using List.js
+   */
   function searchList() {
     if($('#' + labeltrim).find('.search').length === 0 ) {
       $('#' + labeltrim).find('.items').before('<input class="search" placeholder="Search list"/>')
@@ -119,6 +146,10 @@ function Filter(field, label, element, shouldsearch) {
     });
   };
 
+  /**
+   * Select a value in the Qlik Sense Data Model.
+   * Will trigger a update message to notify other objects to update accordingly.
+   */
   function select(qElem) {
     list.selectListObjectValues("/qListObjectDef", [+qElem], field == 'DateRange' ? false : true, false).then(function(success) {
       $('#clearfilter').addClass('active');
@@ -128,6 +159,9 @@ function Filter(field, label, element, shouldsearch) {
     });
   }
 
+  /**
+   * Listed for messages and delegate actions.
+   */
   var update = pubsub.subscribe('update', render);
   pubsub.subscribe('kill', function() {
     QIX.app.destroySessionObject(listId);

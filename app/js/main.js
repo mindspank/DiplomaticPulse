@@ -1,4 +1,4 @@
-/* global Table */
+/** Empty out any existing filters **/
 $('#filter-container').empty();
 
 /*
@@ -15,10 +15,15 @@ var un = new Filter("=If([Entity Type] = 'United Nations System', [Entity Name])
 var region = new Filter('Region', 'Region', container);
 var subregion = new Filter('Sub-Region', 'Sub-Region', container);
 
+/** 
+ * Tweet Table
+ */
 var contenttable = new ContentTable(['Content Type', 'Entity Name', 'Timestamp', 'teaser', 'Source', 'URL', 'doctype', 'favorites', 'retweets', 'mediaURL'], $('.table-tweets'));
 
 
-/*  Map */
+/**
+ * Sidebar Map
+ */
 var mapdefinition = [{
   'dim': 'ISO2',
   'label': 'ISO Code'
@@ -29,10 +34,14 @@ var mapdefinition = [{
 
 var worldmap2 = new WorldMap(mapdefinition, '=Sum({<[Entity Type]={"Member State"}>}[ContentCounter])', document.getElementById('worldmapsmall'));
 
-/* Wordcloud */
+/**
+ * Sidebar Wordcloud
+ */
 var hashtags = new WordCloud('hashtags', 'Sum([HashtagCounter])', document.getElementById('wordcloud'));
 
-/* Tweet Table */
+/**
+ * Sidebar Content Table
+ */
 var tweettable = new Table([{
   'dim': 'Entity Name',
   'label': 'Member State'
@@ -41,7 +50,9 @@ var tweettable = new Table([{
   'value': '=Sum({<[Entity Type]={"Member State"}>}[ContentCounter])'
 }, document.getElementById('tweettable'));
 
-/* Mentions Table */
+/**
+ * Sidebar Mentions Table
+ */
 var mentions = new Table([{
   'dim': 'mentions',
   'label': 'Mentioned'
@@ -50,7 +61,9 @@ var mentions = new Table([{
   'value': 'Sum(MentionCounter)'
 }, document.getElementById('mentiontable'));
 
-/* Line Chart */
+/**
+ * Sidebar Frequency Chart
+ */
 var linechart = new Linechart('Date','=Sum({<DateRange=>}ContentCounter)', document.getElementById('linechart'));
 
 /* Clear selections in filters */
@@ -59,11 +72,14 @@ $('#clearfilter').on('click', function() {
   $('#qv-search-clear').hide();
   $('#qv-search').val('');
   QIX.app.clearAll().then(function() {
+    //trigger a update
     pubsub.publish('update');
   })
 });
 
-/* Clean up */
+/**
+ * On Kill signal perform clean up. Kill is triggered on view change/navigation
+ */
 pubsub.subscribe('kill', function() {
   date = null;
   contentType = null;
@@ -76,4 +92,4 @@ pubsub.subscribe('kill', function() {
   region = null;
   subregion = null;
   linechart = null;
-})
+});
