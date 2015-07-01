@@ -58,12 +58,9 @@ var Search = (function() {
   
   function Search(element, field) {
 
-    var that = this;
-
     this.$input = $(element);
     this.q = QIX.app;
-    this.field = field || 'Content';
-        
+    this.field = field || 'teaser';        
     this.minChars = 3;
     
     this.init();
@@ -84,7 +81,7 @@ var Search = (function() {
         
         $('#qv-search-clear').hide();
         
-        this.q.getField('teaser').then(function(f) { 
+        this.q.getField(this.field).then(function(f) { 
           f.clear().then(function() { 
             $('#main').fadeTo(50,0.5).fadeTo(200,1);
             pubsub.publish('update') })
@@ -118,7 +115,7 @@ var Search = (function() {
     doSearch: function(term) {
 
       var searchTerm = term.split(' ');
-      this.q.selectAssociations({qSearchFields: ['teaser'], qContext: 'CurrentSelections'}, searchTerm, 0).then(function(results) {
+      this.q.selectAssociations({qSearchFields: [this.field], qContext: 'CurrentSelections'}, searchTerm, 0).then(function(results) {
         
         //Perform a quick fade to notify the user that the UI has changed
         $('#main').fadeTo(50,0.5).fadeTo(200,1);
@@ -141,7 +138,7 @@ var Search = (function() {
       /**
        * Clear any selections in the teaser field in Qlik Sense
        */
-      this.q.getField('teaser').then(function(f) { 
+      this.q.getField(this.field).then(function(f) { 
           f.clear().then(function() {
             input.value = '';
             
