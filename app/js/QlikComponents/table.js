@@ -1,3 +1,8 @@
+/**
+ * Generic three column table
+ * Dimension, Inline Bar Chart, Value
+ */
+
 function Table(dimensions, expression, element) {
 
 	var cube, max;
@@ -15,6 +20,12 @@ function Table(dimensions, expression, element) {
 		}
 	});
 
+	/**
+	 * Qlik Sense Object
+	 * https://help.qlik.com/sense/2.0/en-us/developer/Subsystems/EngineAPI/Content/GenericObject/PropertyLevel/HyperCubeDef.htm
+	 * 
+	 * Returns promise which calls render() once resolved.
+	 */
 	QIX.app.createSessionObject({
 		"qInfo": {
 			"qId": "",
@@ -49,15 +60,18 @@ function Table(dimensions, expression, element) {
 	});
 
 	function render() {
+		/**
+		 * Fetch Layout/Data
+		 */
 		cube.getLayout().then(function(layout) {
 			$(element).empty();
 
+			/**
+			 * No Data available - return error.
+			 */
 			if(layout.qHyperCube.qDataPages[0].qMatrix[0][0].qIsEmpty) {
-				
-				$('<p>No Mentions Available</p>').appendTo($(element));
-				
-				return;
-			}
+				return $('<p>No Mentions Available</p>').appendTo($(element));
+			};
 
 			var $table = $('<table />');
 			var $thead = createHeader(layout);
@@ -81,7 +95,10 @@ function Table(dimensions, expression, element) {
 		});
 	}
 
-	//Return a content row - jquery object
+	/**
+	 * Constructs a row and returns a jQuery object.
+	 * Accepts a Qlik Sense data row.
+	 */
 	function createRow(d) {
 
 		var perc = (d[1].qNum / max) * 100;
@@ -96,6 +113,10 @@ function Table(dimensions, expression, element) {
 		return $row;
 	}
 
+	/**
+	 * Creates the Header Row. Returns a jQuery object
+	 * Accepts a Qlik Sense object layout
+	 */
 	function createHeader(layout) {
 
 		var columns = [],
@@ -117,6 +138,10 @@ function Table(dimensions, expression, element) {
 		return $thead;
 	}
 
+	/**
+	 * Select a value in the Qlik Sense Data Model.
+	 * Will trigger a update message to notify other objects to update accordingly.
+	 */
 	function select(qElem) {
 		cube.selectHyperCubeValues('/qHyperCubeDef', 0, [qElem], true).then(function(success) {
 			pubsub.publish('update');
@@ -127,7 +152,9 @@ function Table(dimensions, expression, element) {
 		return string.charAt(0).toUpperCase() + string.slice(1);
 	}
 
-
+	  /**
+	   * Listen for messages and delegate actions.
+	   */
 	  var update = pubsub.subscribe('update', render);
 	  pubsub.subscribe('kill', function() {
 	    pubsub.unsubscribe(update)

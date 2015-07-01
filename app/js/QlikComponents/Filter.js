@@ -100,6 +100,9 @@ function Filter(field, label, element, shouldsearch) {
       var items = layout.qListObject.qDataPages[0].qMatrix;
       var selected = layout.qListObject.qDimensionInfo.qStateCounts.qSelected;
 
+      /**
+       * Show/Hide selected counter based on data
+       */
       if (selected > 0) {
         selectedState = true;
         $count.visible().text(selected + ' of ' + layout.qListObject.qSize.qcy);
@@ -108,6 +111,9 @@ function Filter(field, label, element, shouldsearch) {
         $count.invisible();
       }
 
+      /**
+       * Append list items, data-elem contains the Qlik Sense Index to be selected on the data model on click.
+       */
       var $ul = $('<ul class="list" />');
       $ul.html(items.map(function(d) {
         return '<li data-elem="' + d[0].qElemNumber + '" class="' + d[0].qState + ' listitem"><p class="value">' + d[0].qText + '</p></li>'
@@ -160,7 +166,7 @@ function Filter(field, label, element, shouldsearch) {
   }
 
   /**
-   * Listed for messages and delegate actions.
+   * Listen for messages and delegate actions.
    */
   var update = pubsub.subscribe('update', render);
   pubsub.subscribe('kill', function() {
