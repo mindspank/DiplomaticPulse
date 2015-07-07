@@ -152,7 +152,8 @@ function Linechart(dimension, expression, element) {
 	    .range([0, width]);
 	
 		y = d3.scale.linear()
-		    .range([height, 0]);
+		    .range([height, 0])
+			.tickFormat(d3.format("s"));
 		
 		xAxis = d3.svg.axis()
 		    .scale(x)
