@@ -76,6 +76,10 @@ if( typeof(WebSocket) !== "function" ) {
       Intro.show();
     };
     
+    $('.openintro').on('click', function() {
+      Intro.show();
+    });
+    
     $('#modal-toggle').on('click', function() {
       if( $('#dontshow').is(':checked') ) {
         Intro.setData(true);
