@@ -14,7 +14,7 @@ function Linechart(dimension, expression, element) {
 
 	var parseDate = d3.time.format("%Y-%m-%d").parse;
 
-	var margin = {top: 20, right: 20, bottom: 30, left: 50};
+	var margin = {top: 20, right: 20, bottom: 30, left: 30};
 
 	width = element.offsetWidth - margin.left - margin.right;
 	height = (width / 1.2) - margin.top - margin.bottom;
@@ -23,7 +23,8 @@ function Linechart(dimension, expression, element) {
     .range([0, width]);
 
 	y = d3.scale.linear()
-	    .range([height, 0]);
+	    .range([height, 0])
+		.nice();
 	
 	xAxis = d3.svg.axis()
 	    .scale(x)
@@ -32,7 +33,7 @@ function Linechart(dimension, expression, element) {
 	
 	yAxis = d3.svg.axis()
 	    .scale(y)
-		.ticks(3)
+		.tickFormat(d3.format("s"))
 	    .orient("left");
 	
 	line = d3.svg.line()
