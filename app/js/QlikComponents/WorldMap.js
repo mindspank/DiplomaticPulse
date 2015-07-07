@@ -141,7 +141,7 @@ function WorldMap(dimensions, expression, element) {
 					return path.centroid(d)[1];
 				})
 				.attr("r", function(d) {
-					if(layout.qHyperCube.qDataPages[0].qMatrix.length === 1) {
+					if(layout.qHyperCube.qDataPages[0].qMatrix.length == 1) {
 						return 10;	
 					};
 					return radius(data[d.id].value);

@@ -268,7 +268,6 @@ body {
   background: #fff;
   max-width: 50%;
   min-width: 700px;
-  height: 400px;
   color: #595959;
   overflow: hidden;
 }
@@ -277,13 +276,16 @@ body {
       -ms-flex: 0 0 60px;
           flex: 0 0 60px;
   padding-bottom: 9px;
-  border-bottom: 1px solid #d9d9d9;
 }
 #intro .intro-modal .intro-heading img {
   max-width: 90px;
   height: auto;
   float: left;
   padding-right: 20px;
+}
+#intro .intro-modal .intro-heading img.unite-logo {
+  float: right;
+  max-width: 120px;
 }
 #intro .intro-modal .intro-heading h2 {
   float: left;
@@ -293,6 +295,41 @@ body {
 #intro .intro-modal .content {
   width: 100%;
   padding-top: 30px;
+}
+#intro .intro-modal .content .content-body {
+  margin-bottom: 20px;
+  position: relative;
+  background: transparent;
+  z-index: 1;
+}
+#intro .intro-modal .content .content-body p {
+  font-size: 22px;
+}
+#intro .intro-modal .content .content-body ul {
+  padding-left: 10px;
+  list-style-position: inside;
+}
+#intro .intro-modal .content .content-body ul li {
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+#intro .intro-modal .content .content-assets {
+  margin-top: -90px;
+  height: 270px;
+}
+#intro .intro-modal .content .content-assets .fa {
+  float: left;
+  margin: 0 20px;
+  font-size: 80px;
+  line-height: 260px;
+}
+#intro .intro-modal .content .content-assets .fa-user {
+  color: #00aeef;
+}
+#intro .intro-modal .content .content-assets .network {
+  float: right;
+  width: 400px;
+  height: auto;
 }
 #intro .intro-modal .content input,
 #intro .intro-modal .content label {
