@@ -90,6 +90,12 @@
             padding-top: 10px;
             margin-right: 20px;
             float: left;
+            
+            @media @phone {
+              font-size: 12px;
+              margin-right: 10px;
+            }
+            
           }
           
           li {
@@ -99,6 +105,10 @@
             overflow: hidden;
             min-width: 72px;
             padding: 5px 0;
+            
+            @media @phone {
+              min-width: 50px;
+            }
        
             strong {
               display: block;

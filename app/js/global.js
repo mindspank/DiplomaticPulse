@@ -23,7 +23,7 @@ router.add('wsError', function () {
 
 
 /** If browser is unsupport let user know. Otherwise set up nav and init app  **/
-if( typeof(WebSocket) !== "function" ) {
+if( !'WebSocket' in window ) {
  router.run("wsError");
 } else {
 

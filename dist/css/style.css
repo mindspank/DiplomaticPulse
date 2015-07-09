@@ -101,7 +101,7 @@ p.section-title {
   vertical-align: middle;
   border: 0;
 }
-@media only screen and (max-width: 675px) {
+@media only screen and (max-width: 650px) {
   #menu-button {
     display: block;
   }
@@ -215,9 +215,9 @@ body {
   margin-left: 20px;
   margin-right: 20px;
 }
-@media only screen and (max-width: 675px) {
+@media only screen and (max-width: 650px) {
   #top-controls img {
-    width: 56px;
+    width: 40px;
     margin: 0 10px;
   }
 }
@@ -232,9 +232,9 @@ body {
   text-transform: uppercase;
   margin: 0;
 }
-@media only screen and (max-width: 675px) {
+@media only screen and (max-width: 650px) {
   #top-controls h1 {
-    font-size: 28px;
+    font-size: 24px;
   }
 }
 #top-controls .openintro {
@@ -246,6 +246,11 @@ body {
   font-size: 40px;
   padding-right: 20px;
   cursor: pointer;
+}
+@media only screen and (max-width: 650px) {
+  #top-controls .openintro {
+    display: none;
+  }
 }
 #intro {
   position: absolute;
@@ -364,7 +369,7 @@ body {
 #intro .intro-modal .content label {
   padding-right: 10px;
 }
-@media only screen and (max-width: 675px) {
+@media only screen and (max-width: 650px) {
   #intro {
     display: none !important;
   }
@@ -463,7 +468,7 @@ body {
   overflow-y: auto;
   z-index: 99;
 }
-@media only screen and (max-width: 675px) {
+@media only screen and (max-width: 650px) {
   #sidebar {
     display: none;
     position: absolute;
@@ -837,6 +842,12 @@ body {
   margin-right: 20px;
   float: left;
 }
+@media only screen and (max-width: 650px) {
+  #content #main .table-tweets .rows .item .details a {
+    font-size: 12px;
+    margin-right: 10px;
+  }
+}
 #content #main .table-tweets .rows .item .details li {
   float: left;
   display: block;
@@ -844,6 +855,11 @@ body {
   overflow: hidden;
   min-width: 72px;
   padding: 5px 0;
+}
+@media only screen and (max-width: 650px) {
+  #content #main .table-tweets .rows .item .details li {
+    min-width: 50px;
+  }
 }
 #content #main .table-tweets .rows .item .details li strong {
   display: block;
@@ -947,7 +963,7 @@ body {
   margin: 0;
 }
 @media only screen and (max-width: 1000px) {
-  #menu-button {
+  #diplomaticpulse-container #main.unsupported #menu-button {
     display: none !important;
   }
 }
