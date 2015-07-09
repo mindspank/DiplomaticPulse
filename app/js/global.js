@@ -23,7 +23,7 @@ router.add('wsError', function () {
 
 
 /** If browser is unsupport let user know. Otherwise set up nav and init app  **/
-if( !'WebSocket' in window ) {
+if( 'WebSocket' in window == false ) {
  router.run("wsError");
 } else {
 
@@ -90,6 +90,10 @@ if( !'WebSocket' in window ) {
     });
     
     $('#menu-button').on('click', function() {
+      $('#sidebar').toggle();
+    });
+    
+    $('#menu-button').on('touchstart', function() {
       $('#sidebar').toggle();
     });
     

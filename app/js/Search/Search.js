@@ -105,7 +105,7 @@ var Search = (function() {
     bindevents: function() {
       
       var that = this;      
-      this.$input.on('keyup', debounce(function(event) {
+      this.$input.on('input', debounce(function(event) {
         that._keyup(event);
       },250));
     },
