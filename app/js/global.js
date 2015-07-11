@@ -89,14 +89,10 @@ if( 'WebSocket' in window == false ) {
       Intro.hide();
     });
     
-    $('#menu-button').on('click', function() {
+    $('#menu-button').on('click touchend', function() {
       $('#sidebar').toggle();
     });
-    
-    $('#menu-button').on('touchstart', function() {
-      $('#sidebar').toggle();
-    });
-    
+        
     //Set up Search
     var input = new Search($('#qv-search'));
     

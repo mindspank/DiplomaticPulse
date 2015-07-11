@@ -43,6 +43,7 @@ function Linechart(dimension, expression, element) {
 	svg = d3.select(element).append("svg")
 	    .attr("width", width + margin.left + margin.right)
 	    .attr("height", height + margin.top + margin.bottom);
+	
 	g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 	QIX.app.createSessionObject({
@@ -90,7 +91,7 @@ function Linechart(dimension, expression, element) {
 	function render() {
 		cube.getLayout().then(function(layout) {
 			svg.selectAll('path, .axis, .error').remove();
-
+			console.log(layout)
 			if (layout.qHyperCube.qSize.qcy < 4) {
 
 				svg.append('text')
@@ -106,7 +107,7 @@ function Linechart(dimension, expression, element) {
 				return null;
 			};
 			
-			data = layout.qHyperCube.qDataPages[0].qMatrix.filter(function(d) {
+			var data = layout.qHyperCube.qDataPages[0].qMatrix.filter(function(d) {
 				return d[0].qText.length && +d[1].qNum === (+d[1].qNum | 0);
 			}).map(function(d) {
 				return {
@@ -117,8 +118,11 @@ function Linechart(dimension, expression, element) {
 				return a.date - b.date;
 			});
 			
+			
 			x.domain(d3.extent(data, function(d) { return d.date; }));
 			y.domain(d3.extent(data, function(d) { return d.value; }));
+
+			console.log('after domain')
 			
 			g.append("g")
 			  .attr("class", "x axis")
@@ -143,13 +147,13 @@ function Linechart(dimension, expression, element) {
 	function resize() {
 		svg.selectAll('path, g').remove();
 		
-		g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-		
 		width = element.offsetWidth - margin.left - margin.right;
 		height = (width / 1.2) - margin.top - margin.bottom;
 		
-		x = d3.time.scale()
-	    .range([0, width]);
+		svg.attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom);
+		g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		
+		x = d3.time.scale().range([0, width]);
 	
 		y = d3.scale.linear()
 		    .range([height, 0])
@@ -165,8 +169,7 @@ function Linechart(dimension, expression, element) {
 			.ticks(3)
 		    .orient("left");		
 		
-		svg.attr("width", width + margin.left + margin.right)
-	    	.attr("height", height + margin.top + margin.bottom);
+		
 			
 		render();
 	};
