@@ -931,36 +931,134 @@ body {
   -webkit-flex-direction: column !important;
       -ms-flex-direction: column !important;
           flex-direction: column !important;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  max-width: 700px;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+}
+#diplomaticpulse-container #main.unsupported .titlesection {
+  -webkit-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+  padding: 20px;
+  background-color: #fff;
+  padding-right: 20px;
 }
 #diplomaticpulse-container #main.unsupported .titlesection {
   background-color: #fff;
   padding: 20px;
 }
+#diplomaticpulse-container #main.unsupported .unsupported-heading {
+  -webkit-flex: 0 0 60px;
+      -ms-flex: 0 0 60px;
+          flex: 0 0 60px;
+  height: 60px;
+  padding-bottom: 20px;
+}
+#diplomaticpulse-container #main.unsupported .unsupported-heading img {
+  max-width: 90px;
+  height: auto;
+  float: left;
+  padding-right: 20px;
+}
+#diplomaticpulse-container #main.unsupported .unsupported-heading img.unite-logo {
+  float: right;
+  max-width: 120px;
+}
+#diplomaticpulse-container #main.unsupported .unsupported-heading h2 {
+  float: left;
+  margin: 0;
+  line-height: 50px;
+}
 #diplomaticpulse-container #main.unsupported .browserwrap {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 0 0 200px;
+      -ms-flex: 0 0 200px;
+          flex: 0 0 200px;
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-flex-wrap: no-wrap;
-      -ms-flex-wrap: no-wrap;
-          flex-wrap: no-wrap;
-  margin-top: 40px;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #00aeef;
+  color: #fff;
+}
+#diplomaticpulse-container #main.unsupported .browserwrap p {
+  -webkit-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+  font-size: 16px;
 }
 #diplomaticpulse-container #main.unsupported .browserwrap .browser {
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -webkit-flex: 0 0 120px;
+      -ms-flex: 0 0 120px;
+          flex: 0 0 120px;
+  max-width: 120px;
 }
 #diplomaticpulse-container #main.unsupported .browserwrap .browser img {
   display: block;
   max-width: 100%;
   height: auto;
+  padding: 0 10px;
   margin: 0;
+}
+#diplomaticpulse-container #main.unsupported .content-body {
+  margin-bottom: 20px;
+  position: relative;
+  background: transparent;
+  z-index: 1;
+}
+#diplomaticpulse-container #main.unsupported .content-body p {
+  font-size: 18px;
+}
+#diplomaticpulse-container #main.unsupported .content-body ul {
+  padding-left: 10px;
+  list-style-position: inside;
+}
+#diplomaticpulse-container #main.unsupported .content-body ul li {
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+#diplomaticpulse-container #main.unsupported .content-assets {
+  margin-top: -70px;
+  height: 270px;
+}
+#diplomaticpulse-container #main.unsupported .content-assets .fa {
+  float: left;
+  margin: 0 20px;
+  font-size: 80px;
+  line-height: 260px;
+}
+#diplomaticpulse-container #main.unsupported .content-assets .fa-user {
+  color: #00aeef;
+}
+#diplomaticpulse-container #main.unsupported .content-assets .network {
+  float: right;
+  width: 400px;
+  height: auto;
+}
+#diplomaticpulse-container #main.unsupported .content-footer {
+  color: #6F6F6F;
+}
+#diplomaticpulse-container #main.unsupported .content-footer img {
+  width: auto;
+  height: 30px;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+#diplomaticpulse-container #main.unsupported input,
+#diplomaticpulse-container #main.unsupported label {
+  float: right;
+  line-height: 24px;
 }
 @media only screen and (max-width: 1000px) {
   #diplomaticpulse-container #main.unsupported #menu-button {

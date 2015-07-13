@@ -4,30 +4,136 @@
 	#diplomaticpulse-container #main.unsupported {
 		
 		flex-direction: column !important;
-		align-items: center;
+		max-width: 700px;
+		align-self: center;
+		
+		.titlesection {
+			flex: 1 1 100%;
+			padding: 20px;
+			background-color: #fff;
+			padding-right: 20px;
+		}
 		
 		.titlesection {
 			background-color: #fff;
 			padding: 20px;
 		}
 		
+		.unsupported-heading {
+	      flex: 0 0 60px;
+		  height: 60px;
+	      padding-bottom: 20px;
+	
+	      img {
+	        max-width: 90px;
+	        height: auto;
+	        float: left;
+	        padding-right: 20px;
+			&.unite-logo {
+				float: right;
+				max-width: 120px;
+			}
+	      }
+	      
+	      h2 {
+	        float: left;
+	        margin: 0;
+	        line-height: 50px;
+	      }
+	
+	    }
+		
 		.browserwrap {
 			display: flex;
+			flex: 0 0 200px;
 			flex-direction: row;
-			flex-wrap: no-wrap;
-			margin-top: 40px;
+			align-items: center;
+			flex-wrap: wrap;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			padding: 10px;
+			background-color: #00aeef;
+			color: #fff;
+			
+			p {
+				flex: 1 1 100%;
+				font-size: 16px;
+			}
 			
 			.browser {
-				flex: 1;
+				flex: 0 0 120px;
+				max-width: 120px;
 				img {
 					display: block;
 					max-width: 100%;
 					height: auto;
+					padding: 0 10px;
 					margin: 0;
 				}
 			}
 			
 		}
+		
+		.content-body {
+			margin-bottom: 20px;
+			position: relative;
+			background: transparent;
+			z-index: 1;
+			
+			p {
+				font-size: 18px;
+			}
+			
+			ul {
+				padding-left: 10px;
+				list-style-position: inside;
+				li {
+					font-size: 16px;
+					padding-bottom: 10px;
+				}
+			}
+						
+		}
+		
+		.content-assets {
+		  margin-top: -70px;
+		  height: 270px;
+		
+			.fa {
+				float: left;
+				margin: 0 20px;
+				font-size: 80px;
+				line-height: 260px;
+			}
+			
+			.fa-user {
+				color: #00aeef;
+			}
+			
+			.network {
+				float: right;
+				width: 400px;
+				height: auto;
+			}
+		
+		}	
+		
+		  .content-footer {
+			  color: #6F6F6F;
+			  
+			  img {
+				  width: auto;
+				  height: 30px;
+				  margin-right: 20px;
+				  margin-bottom: 5px;
+			  }
+		  }
+		  
+		  input, label {
+			  float: right;
+			  line-height: 24px;
+		  }			
+		
 		@media @tablet {
 			#menu-button {
 				display: none !important;

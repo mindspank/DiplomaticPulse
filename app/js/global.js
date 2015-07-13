@@ -16,6 +16,7 @@ router.add('export', function () {
 
 /** If browser does not support window.WebSocket **/
 router.add('wsError', function () {
+    $('#top-controls').remove();
     $('#main').removeClass().addClass('unsupported').load('static/partials/wsError.html', function() {
        $("#sidebar, #search").hide();
     });
