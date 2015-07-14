@@ -93,7 +93,6 @@ function Linechart(dimension, expression, element) {
 			
 		cube.getLayout().then(function(layout) {
 			svg.selectAll('path, .axis, .error').remove();
-			console.log(layout)
 			if (layout.qHyperCube.qSize.qcy < 4) {
 
 				svg.append('text')
@@ -123,8 +122,6 @@ function Linechart(dimension, expression, element) {
 			
 			x.domain(d3.extent(data, function(d) { return d.date; }));
 			y.domain(d3.extent(data, function(d) { return d.value; }));
-
-			console.log('after domain')
 			
 			g.append("g")
 			  .attr("class", "x axis")
