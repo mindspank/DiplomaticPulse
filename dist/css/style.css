@@ -782,6 +782,12 @@ body {
 #content #main .table-tweets .title-row p {
   margin: 0;
 }
+@media only screen and (max-width: 650px) {
+  #content #main .table-tweets .title-row p span {
+    float: left !important;
+    font-size: 9px !important;
+  }
+}
 #content #main .table-tweets .rows {
   float: left;
   width: 100%;

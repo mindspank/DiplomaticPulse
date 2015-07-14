@@ -27,7 +27,7 @@ function ContentTable(fieldlist, element) {
       "qType": "HyperCube"
     },
     TOTALS: {
-      qStringExpression: "='Currently showing ' & Sum(ContentCounter) & ' out of ' & Sum({1}ContentCounter) & ' tweets and articles.'"
+      qStringExpression: "='Showing ' & Sum(ContentCounter) & ' out of ' & Sum({1}ContentCounter) & ' tweets & articles.'"
     },
     "qHyperCubeDef": {
       "qDimensions": dimensionList,
