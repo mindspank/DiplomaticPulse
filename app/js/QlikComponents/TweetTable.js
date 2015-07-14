@@ -26,6 +26,9 @@ function ContentTable(fieldlist, element) {
       "qId": "",
       "qType": "HyperCube"
     },
+    TOTALS: {
+      qStringExpression: "='Currently showing ' & Sum(ContentCounter) & ' out of ' & Sum({1}ContentCounter) & ' tweets and articles.'"
+    },
     "qHyperCubeDef": {
       "qDimensions": dimensionList,
       "qSuppressMissing": true,
@@ -54,6 +57,8 @@ function ContentTable(fieldlist, element) {
       maxIdx = layout.qHyperCube.qSize.qcy;
 
       $rows.empty();
+      
+      $('.title-row .totals').text(layout.TOTALS);
 
       var items = layout.qHyperCube.qDataPages[0].qMatrix;
 
