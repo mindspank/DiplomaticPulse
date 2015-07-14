@@ -90,7 +90,7 @@ if( 'WebSocket' in window == false ) {
       Intro.hide();
     });
     
-    $('#menu-button').on('click touchend', function() {
+    $('#menu-button').on('click', function() {
       $('#sidebar').toggle();
     });
         
