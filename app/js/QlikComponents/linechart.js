@@ -152,9 +152,11 @@ function Linechart(dimension, expression, element) {
 	};
 
 	var update = pubsub.subscribe('update', render);
+	var resizeEvent = pubsub.subscribe('resize', resize);
+	
 	pubsub.subscribe('kill', function() {
 		pubsub.unsubscribe(update);
+		pubsub.unsubscribe(resizeEvent);
 	});
-	pubsub.subscribe('resize', resize);
 
 };

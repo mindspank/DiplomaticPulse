@@ -101,11 +101,11 @@ function WordCloud(dimension, expression, element) {
 				}
 			});
 
-			var background = svg.append("g"),
-				vis = svg.append("g")
+
+			var vis = svg.append("g")
 				.attr("transform", "translate(" + [w >> 1, h >> 1] + ")");
 
-			var wordlayout = d3.layout.cloud()
+			d3.layout.cloud()
 				.words(data)
 				.timeInterval(10)
 				.padding(2)
@@ -184,10 +184,10 @@ function WordCloud(dimension, expression, element) {
 	};
 
 	var update = pubsub.subscribe('update', render);
+	var resizeEvent = pubsub.subscribe('resize', resize);
+	
 	pubsub.subscribe('kill', function() {
 		pubsub.unsubscribe(update);
+		pubsub.unsubscribe(resizeEvent);
 	});
-
-	var resizeEvent = pubsub.subscribe('resize', resize);
-
 };

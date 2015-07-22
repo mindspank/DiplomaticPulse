@@ -1,5 +1,5 @@
 /* global pubsub */
-function Export(fieldlist, container) {
+function Tracking(fieldlist, container) {
 	
 	var cube;
 	var $tbody = container.find('tbody');
@@ -11,7 +11,7 @@ function Export(fieldlist, container) {
 			"qDef": {
 				"qFieldDefs": [d],
 				"qSortCriterias": [{
-					"qSortByNumeric": -1
+					"qSortByAscii": 1
 				}]
 			}
 		};
@@ -20,7 +20,7 @@ function Export(fieldlist, container) {
 	QIX.app.createSessionObject({
 		"qInfo": {
 			"qId": "",
-			"qType": "ExportHyperCube"
+			"qType": "HyperCube"
 		},
 		"qHyperCubeDef": {
 			"qDimensions": dimensionList,
@@ -28,7 +28,7 @@ function Export(fieldlist, container) {
 			"qInitialDataFetch": [{
 				qTop: 0,
 				qLeft: 0,
-				qHeight: 500,
+				qHeight: 1000,
 				qWidth: dimensionList.length + 1
 			}]
 		}
@@ -54,31 +54,31 @@ function Export(fieldlist, container) {
 				
 				var $row = $('<tr/>');
 				
-				datarow.forEach(function(d) {
-					$('<td>' + d.qText + '</td>').appendTo($row);
+				datarow.forEach(function(d, i) {
+					if( i == 2) {
+						return $('<td><a href="' + d.qText.trim() + '" target="_blank">' + d.qText + '</a></td>').appendTo($row);
+					};
+					if ( i == 3 ) {
+						
+						var str = d.qText.split(',').map(function(d) {
+							return '<a href="http://www.twitter.com/' + d.trim() + '" target="_blank">' + d + '</a>'
+						});
+						
+						return $('<td>' + str + '</td>').appendTo($row);
+					};
+					return $('<td>' + d.qText + '</td>').appendTo($row);
 				});
 				
 				$row.appendTo($tbody);
-				
-				return i === 75;
 				
 			});		
 			
 		});
 	};
 	
-	function exportData() {
-		
-		var filename = 'DPExport_' + new Date(Date.now()).toISOString().substring(0,16);
-		
-		cube.exportData('CSV_C', '/qHyperCubeDef', filename).then(function(reply) {
-			window.open('https://' + QIX.config.host + reply, '_blank');
-		});
-			
-	};
-	
-	
-	var doExport = pubsub.subscribe('export', exportData);
 	var update = pubsub.subscribe('update', render);
+	pubsub.subscribe('kill', function() {
+		pubsub.unsubscribe(update);
+	});
 	
 };

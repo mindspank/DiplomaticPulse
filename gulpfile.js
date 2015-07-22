@@ -38,7 +38,7 @@ gulp.task('build:scripts', function() {
         .pipe(plumber)
         .pipe(uglify)
         .pipe(gulp.dest, paths.scripts.output);
-        
+                
         return gulp.src(paths.scripts.input)
             .pipe(plumber())
             .pipe(tap(function(file, t) {
@@ -49,7 +49,8 @@ gulp.task('build:scripts', function() {
                         .pipe(jsTasks());
                 }
             }))
-            .pipe(jsTasks());
+            .pipe(jsTasks())
+            .on('error', console.log);
             
 });
 

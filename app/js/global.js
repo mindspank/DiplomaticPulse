@@ -7,6 +7,13 @@ router.add('home', function () {
   });
 });
 
+/** Tracking List **/
+router.add('trackinglist', function () {
+    $('#main').removeClass().addClass('trackinglist').load('static/partials/trackinglist.html', function() {
+       $.getScript('js/trackinglist.js')
+    });
+});
+
 /** Export functionality currently disabled due to bug in QS with anon users and exports **/
 router.add('export', function () {
     $('#main').removeClass().addClass('export').load('static/partials/export.html', function() {

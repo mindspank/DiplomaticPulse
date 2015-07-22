@@ -933,6 +933,51 @@ body {
   overflow: hidden;
   max-width: 120px;
 }
+#main.trackinglist {
+  -webkit-flex-direction: row !important;
+      -ms-flex-direction: row !important;
+          flex-direction: row !important;
+  -webkit-flex-wrap: wrap !important;
+      -ms-flex-wrap: wrap !important;
+          flex-wrap: wrap !important;
+  padding: 0 40px;
+}
+#main.trackinglist .titlesection {
+  -webkit-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+  padding: 20px;
+  background-color: #fff;
+  padding-right: 20px;
+}
+#main.trackinglist .titlesection h3 {
+  float: left;
+}
+#main.trackinglist .titlesection p {
+  clear: both;
+}
+#main.trackinglist .titlesection button {
+  float: right;
+  margin-top: 20px;
+}
+#main.trackinglist .trackingarea {
+  -webkit-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+  padding: 20px;
+  background-color: #fff;
+  margin-top: 20px;
+  overflow-x: auto;
+}
+#main.trackinglist .trackingarea table {
+  font-size: 13px;
+}
+#main.trackinglist .trackingarea table tbody td {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 120px;
+}
 #diplomaticpulse-container #main.unsupported {
   -webkit-flex-direction: column !important;
       -ms-flex-direction: column !important;
