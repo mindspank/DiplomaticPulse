@@ -7,11 +7,11 @@ function Tracking(fieldlist, container) {
 		
 	var dimensionList = fieldlist.map(function(d) {
 		return {
-			"qNullSuppression": true,
+			"qNullSuppression": false,
 			"qDef": {
 				"qFieldDefs": [d],
 				"qSortCriterias": [{
-					"qSortByAscii": 1				
+					"qSortByAscii": 1,				
 				}]
 			}
 		};
@@ -22,7 +22,7 @@ function Tracking(fieldlist, container) {
 			"qId": "",
 			"qType": "HyperCube"
 		},
-		"qListObjectDef": {
+		"qHyperCubeDef": {
 			"qDimensions": dimensionList,
 			"qInterColumnSortOrder": [0],
 			"qInitialDataFetch": [{
