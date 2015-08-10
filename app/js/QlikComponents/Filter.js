@@ -55,7 +55,7 @@ function Filter(field, label, element, shouldsearch) {
     "qSortByNumeric": 1
   } : {
     //"qSortByState": 1,
-    "qSortByAsci": 1
+    "qSortByAscii": 1
   };
 
   /**

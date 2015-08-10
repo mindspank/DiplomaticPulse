@@ -11,7 +11,7 @@ function Tracking(fieldlist, container) {
 			"qDef": {
 				"qFieldDefs": [d],
 				"qSortCriterias": [{
-					"qSortByAscii": 1
+					"qSortByAscii": 1				
 				}]
 			}
 		};
@@ -22,7 +22,7 @@ function Tracking(fieldlist, container) {
 			"qId": "",
 			"qType": "HyperCube"
 		},
-		"qHyperCubeDef": {
+		"qListObjectDef": {
 			"qDimensions": dimensionList,
 			"qInterColumnSortOrder": [0],
 			"qInitialDataFetch": [{
