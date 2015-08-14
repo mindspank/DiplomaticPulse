@@ -71,6 +71,7 @@ function Filter(field, label, element, shouldsearch) {
     },
     "qListObjectDef": {
       "qLibraryId": "",
+      "qShowAlternatives": true,
       "qDef": {
         "qFieldDefs": [field],
         "qSortCriterias": [sort]
