@@ -605,6 +605,7 @@ body {
 #sidebar #filter-container div.filter .items ul li.X {
   color: #dddddd;
   font-style: italic;
+  cursor: auto;
 }
 #sidebar #filter-container div.filter .items ul li p {
   margin: 0;

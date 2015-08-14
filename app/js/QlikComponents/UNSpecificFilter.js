@@ -14,8 +14,7 @@
     };
 }(jQuery));
 
-
-function Filter(field, label, element, shouldsearch) {
+function Filter(field, label, element, filterOn) {
 
   var list;
   var listId;
@@ -49,16 +48,6 @@ function Filter(field, label, element, shouldsearch) {
   });
 
   /**
-   * Sort Filters alphabetically unless it's a date filter.
-   */
-  var sort = field == 'DateRange' ? {
-    "qSortByNumeric": 1
-  } : {
-    //"qSortByState": 1,
-    "qSortByAscii": 1
-  };
-
-  /**
    * Create the Qlik Sense Object
    * https://help.qlik.com/sense/2.0/en-us/developer/Subsystems/EngineAPI/Content/GenericObject/PropertyLevel/ListObjectDef.htm
    * 
@@ -74,13 +63,15 @@ function Filter(field, label, element, shouldsearch) {
       "qShowAlternatives": true,
       "qDef": {
         "qFieldDefs": [field],
-        "qSortCriterias": [sort]
+        "qSortCriterias": [{
+			     "qSortByAscii": 1
+		    }]
       },
       "qInitialDataFetch": [{
         "qTop": 0,
         "qHeight": 300,
         "qLeft": 0,
-        "qWidth": 1
+        "qWidth": 2
       }]
     }
   }).then(function(reply) {
@@ -100,6 +91,10 @@ function Filter(field, label, element, shouldsearch) {
       
       var items = layout.qListObject.qDataPages[0].qMatrix;
       var selected = layout.qListObject.qDimensionInfo.qStateCounts.qSelected;
+
+      items.filter(function(d) {
+        return d[1]
+      });
 
       /**
        * Show/Hide selected counter based on data
@@ -158,7 +153,7 @@ function Filter(field, label, element, shouldsearch) {
    * Will trigger a update message to notify other objects to update accordingly.
    */
   function select(qElem) {
-    list.selectListObjectValues("/qListObjectDef", [+qElem], field == 'DateRange' ? false : true, false).then(function(success) {
+    list.selectListObjectValues("/qListObjectDef", [+qElem], true, false).then(function(success) {
       $('#clearfilter').addClass('active');
       pubsub.publish('update');
     }, function(error) {

@@ -6,10 +6,10 @@ $('#filter-container').empty();
  * @params Field in data model, Label, DOM Element, Search
  */
 var container = document.getElementById('filter-container');
-
+//=If([Entity Type] = 'Member State', [Entity Name])
 var date = new Filter('DateRange', 'Time', container);
 var contentType = new Filter('Content Type', 'Content Type', container);
-var org = new Filter("=If([Entity Type] = 'Member State', [Entity Name])", 'Member State', container, true);
+var org = new Filter("[Entity Name]", 'Member State', container, true);
 var intorg = new Filter("=If([Entity Type] = 'International Organization', [Entity Name])", 'Int. Organization', container, true);
 var un = new Filter("=If([Entity Type] = 'United Nations System', [Entity Name])", 'UN Systems', container, true);
 var region = new Filter('Region', 'Region', container);

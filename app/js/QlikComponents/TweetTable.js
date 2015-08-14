@@ -127,9 +127,9 @@ function ContentTable(fieldlist, element) {
     var $row = $('<div class="item" />');
 
     $('<div class="info"><i class="fa fa-twitter"></i>&nbsp;&nbsp;' + d[1].qText + spacer + d[2].qText + '</div>').appendTo($row);
-    $('<div class="body">' + d[3].qText + '</div>').appendTo($row);
+    $('<div class="body">' + d[3].qText + '<br><img style="display: none;width: 100%;"></img></div>').appendTo($row);
     
-    var detailsTmpl = '<div class="details" style="display: none;"><img style="display: none;width: 100%;"></img><div class="details-bar">';
+    var detailsTmpl = '<div class="details" style="display: none;"><div class="details-bar">';
     detailsTmpl += '<ul><li class="retweet">RETWEETS <strong>' + d[8].qText + '</strong>';
     detailsTmpl += '</li><li class="favorite">FAVORITES <strong>' + d[7].qText + '</strong></li>'
     detailsTmpl += '<li class="handle">TWITTER HANDLE <strong>' + d[4].qText.substring(1) + '</strong></li><li></li></ul>';
@@ -141,6 +141,8 @@ function ContentTable(fieldlist, element) {
     if(d[9].qText != '-') {
       $row.find('.info').append('<i class="fa fa-picture-o"></i>')
       $details.find('img').attr('src', d[9].qText).show();
+      $row.find('img').attr('src', d[9].qText).show();
+      
     };
     
     $details.appendTo($row);
