@@ -67,6 +67,9 @@ function Filter(field, label, element, filterOn) {
 			     "qSortByAscii": 1
 		    }]
       },
+      "qExpressions": [{
+        "qExpr": "=only([Entity Type])"
+      }],
       "qInitialDataFetch": [{
         "qTop": 0,
         "qHeight": 300,
