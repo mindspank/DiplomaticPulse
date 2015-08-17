@@ -14,7 +14,7 @@
     };
 }(jQuery));
 
-function Filter(field, label, element, filterOn) {
+function UNFilter(field, label, element, filterOn) {
 
   var list;
   var listId;
