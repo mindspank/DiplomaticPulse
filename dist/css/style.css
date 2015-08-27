@@ -463,7 +463,6 @@ body {
 #sidebar {
   background-color: #ffffff;
   color: #595959;
-  height: 100%;
   border-right: 1px solid #e8e8e8;
   overflow-y: auto;
   z-index: 99;
@@ -556,7 +555,7 @@ body {
   color: #373737;
   height: 32px;
   line-height: 32px;
-  padding-left: 18px;
+  padding-left: 16px;
   cursor: pointer;
 }
 #sidebar #filter-container div.filter .title .right {
@@ -625,12 +624,12 @@ body {
       -ms-flex-order: 3;
           order: 3;
 }
-#sidebar #filter-container #IntOrganization {
+#sidebar #filter-container #InternationalOrganization {
   -webkit-order: 4;
       -ms-flex-order: 4;
           order: 4;
 }
-#sidebar #filter-container #UNSystems {
+#sidebar #filter-container #UnitedNationsSystem {
   -webkit-order: 5;
       -ms-flex-order: 5;
           order: 5;
