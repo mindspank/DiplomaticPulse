@@ -5,10 +5,12 @@ $('#filter-container').empty();
  * @params Field in data model, Label, DOM Element, Search
  */
 var container = document.getElementById('filter-container');
-var orgType = new Filter('[Entity Type]', 'Member Type', container);
-var org = new Filter('[Entity Name]', 'Member State', container, true);
+var date = new Filter('DateRange', 'Time', container);
+var contentType = new Filter('Content Type', 'Content Type', container);
 var region = new Filter('Region', 'Region', container);
 var subregion = new Filter('Sub-Region', 'Sub-Region', container);
+
+var combinedFilter = new UNFilter(container);
 
 var trackingtable = new Tracking(['[Entity Name]', '[Entity Type]', '[Entity URL]', '[Entity Twitter Handles]'], $('.trackingarea'));
 
@@ -23,4 +25,5 @@ pubsub.subscribe('kill', function() {
   orgType = null;
   region = null;
   subregion = null;
+  combinedFilter = null;
 });
