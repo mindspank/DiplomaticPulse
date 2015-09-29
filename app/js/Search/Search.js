@@ -117,22 +117,24 @@ var Search = (function() {
       var searchTerm = term.split(' ');
       
       var that = this;
-      
-      this.listobject.searchListObjectFor('/qListObjectDef',searchTerm.map(function(d) { return '*' + d + '*'; }).join(' ').trim())
-       .then(function() {
-        return that.listobject.getLayout();
-      })
+      this.listobject.getLayout().then(function() {
+        return that.listobject.searchListObjectFor('/qListObjectDef',searchTerm.map(function(d) { return '*' + d + '*'; }).join(' ').trim())
+      })      
       .then(function() {
-        return that.listobject.acceptListObjectSearch('/qListObjectDef', false);
+        return that.listobject.getLayout();//getListObjectData('/qListObjectDef',[{"qTop":0,"qLeft":0,"qWidth":1,"qHeight":10}]);
       })
-      .then(function() {
-            $('#main').fadeTo(50,0.5).fadeTo(200,1);
-          
-          that.listobject.getLayout().then(function(layout) {
-            console.log(layout);
-            pubsub.publish('update');
-          })       
-      })
+      .then(function(data) {
+        $('#main').fadeTo(50,0.5).fadeTo(200,1);
+        console.log(data)
+        if (data[0].qMatrix.length === 0) {
+          pubsub.publish('nodata');
+        } else {                               
+          that.listobject.acceptListObjectSearch('/qListObjectDef', false).then(function() {
+            console.log(data)
+            pubsub.publish('update'); 
+          });      
+        }
+      });
       
       /*
       

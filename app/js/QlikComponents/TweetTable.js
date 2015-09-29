@@ -165,7 +165,7 @@ function ContentTable(fieldlist, element) {
 
     var detailsTmpl = '<div class="details" style="display: none;"><div class="details-bar">';
     detailsTmpl += '<ul><li class="documenttype">DOCUMENT TYPE <strong>' + d[6].qText + '</strong></li></ul>';
-    detailsTmpl += '<a target="_blank" href="' + d[5].qText + '">Read document</a><a target="_blank" href="//' + d[4].qText + '">Visit source site</a>';
+    detailsTmpl += '<a target="_blank" href="' + d[5].qText + '">Read document</a>';//<a target="_blank" href="//' + d[4].qText + '">Visit source site</a>';
     detailsTmpl += '</div></div>';
     var $details = $(detailsTmpl);
     
