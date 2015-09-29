@@ -115,6 +115,30 @@ var Search = (function() {
     doSearch: function(term) {
 
       var searchTerm = term.split(' ');
+      
+      var that = this;
+      
+      this.listobject.searchListObjectFor('/qListObjectDef',searchTerm.map(function(d) { return '*' + d + '*'; }).join(' ').trim())
+       .then(function() {
+        return that.listobject.getLayout();
+      })
+      .then(function() {
+        return that.listobject.acceptListObjectSearch('/qListObjectDef', false);
+      })
+      .then(function() {
+            $('#main').fadeTo(50,0.5).fadeTo(200,1);
+          
+          that.listobject.getLayout().then(function(layout) {
+            console.log(layout);
+            pubsub.publish('update');
+          })       
+      })
+      
+      /*
+      
+      this.q.searchAssociations({qSearchFields: [this.field], qContext: 'CurrentSelections'}, searchTerm, {qOffset: 0, qCount: 40}).then(function(results) {
+        console.log(results)
+      })
       this.q.selectAssociations({qSearchFields: [this.field], qContext: 'CurrentSelections'}, searchTerm, 0).then(function(results) {
         
         //Perform a quick fade to notify the user that the UI has changed
@@ -124,6 +148,8 @@ var Search = (function() {
         pubsub.publish('update');
       });
       
+      */
+      
     },
     /**
      * Clear a Search made in the Qlik Sense data model
@@ -131,6 +157,7 @@ var Search = (function() {
     clear: function() {
       var input = document.getElementById('qv-search');
       var button = document.getElementById('qv-search-clear');
+      
       if(input.value.length === 0) return;
       
       button.style.display = 'none';
@@ -155,7 +182,32 @@ var Search = (function() {
      * Bind events and setup event listeners
      */
     init: function() {
-
+      
+      var that = this;
+      
+      QIX.app.createSessionObject({
+        qInfo: {
+          qId: "",
+          qType: "ListObject"
+        },
+        qSelectionObjectDef: {},
+        qListObjectDef: {
+          qLibraryId: "",
+          qShowAlternatives: false,
+          qDef: {
+            qFieldDefs: ['teaser']
+          },
+        qInitialDataFetch: [{
+          "qTop": 0,
+          "qHeight": 300,
+          "qLeft": 0,
+          "qWidth": 1
+        }]
+        }
+      }).then(function(handle) {
+        that.listobject = handle;
+      })
+      
       this.bindevents();
       
       var clearbutton = document.getElementById('qv-search-clear');
