@@ -62,7 +62,11 @@ if( 'WebSocket' in window == false ) {
         QIX.global = g;
         g.openDoc(config.appname).then(function(a) {
           QIX.app = a;
-          a.clearAll().then(cb)
+          a.clearAll().then(function() {
+            a.getField('DateRange').then(function(field) {
+              field.selectValues([{qText: 'Last 24 hours'}], true).then(cb)
+            })
+          })
         })
       }, function(error) {
         console.log(error)
