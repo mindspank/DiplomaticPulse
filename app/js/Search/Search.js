@@ -62,6 +62,7 @@ var Search = (function() {
     this.q = QIX.app;
     this.field = field || 'teaser';        
     this.minChars = 3;
+    this.$nohits = $('#search-nohits');
     
     this.init();
     
@@ -80,6 +81,7 @@ var Search = (function() {
       if( e.currentTarget.value.length == 0 ) {
         
         $('#qv-search-clear').hide();
+        this.$nohits.hide();
         
         this.q.getField(this.field).then(function(f) { 
           f.clear().then(function() { 
@@ -121,17 +123,16 @@ var Search = (function() {
         return that.listobject.searchListObjectFor('/qListObjectDef',searchTerm.map(function(d) { return '*' + d + '*'; }).join(' ').trim())
       })      
       .then(function() {
-        return that.listobject.getLayout();//getListObjectData('/qListObjectDef',[{"qTop":0,"qLeft":0,"qWidth":1,"qHeight":10}]);
+        return that.listobject.getListObjectData('/qListObjectDef',[{"qTop":0,"qLeft":0,"qWidth":1,"qHeight":10}]);
       })
       .then(function(data) {
-        $('#main').fadeTo(50,0.5).fadeTo(200,1);
-        console.log(data)
+
         if (data[0].qMatrix.length === 0) {
           pubsub.publish('nodata');
-        } else {                               
+        } else {                          
           that.listobject.acceptListObjectSearch('/qListObjectDef', false).then(function() {
-            console.log(data)
-            pubsub.publish('update'); 
+            $('#main').fadeTo(50,0.5).fadeTo(200,1);
+            pubsub.publish('update');
           });      
         }
       });
@@ -157,6 +158,7 @@ var Search = (function() {
      * Clear a Search made in the Qlik Sense data model
      */
     clear: function() {
+      var that = this;
       var input = document.getElementById('qv-search');
       var button = document.getElementById('qv-search-clear');
       
@@ -170,6 +172,7 @@ var Search = (function() {
       this.q.getField(this.field).then(function(f) { 
           f.clear().then(function() {
             input.value = '';
+            $('#search-nohits').hide();
             
             //Perform a quick fade to notify the user that the UI has changed
             $('#main').fadeTo(50,0.5).fadeTo(200,1);
@@ -178,6 +181,12 @@ var Search = (function() {
             pubsub.publish('update');
           });
       });
+    },
+    nodata: function() {
+      
+      $('#search-nohits').find('span').text( $('#qv-search').val() );
+      $('#search-nohits').show();
+      
     },
     /**
      * Initialize Search
@@ -216,6 +225,8 @@ var Search = (function() {
       clearbutton.addEventListener('click', function() {
         this.clear();
       }.bind(this), false);
+      
+      pubsub.subscribe('nodata', that.nodata);
       
     }
   };

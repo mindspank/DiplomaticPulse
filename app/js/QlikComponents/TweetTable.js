@@ -127,7 +127,7 @@ function ContentTable(fieldlist, element) {
     var $row = $('<div class="item" />');
 
     $('<div class="info"><i class="fa fa-twitter"></i>&nbsp;&nbsp;' + d[1].qText + spacer + d[2].qText + '</div>').appendTo($row);
-    $('<div class="body">' + d[3].qText + '<br><img style="display: none;width: 100%;"></img></div>').appendTo($row);
+    $('<div class="body">' + d[3].qText + '<br><img style="display: none;"></img></div>').appendTo($row);
     
     var detailsTmpl = '<div class="details" style="display: none;"><div class="details-bar">';
     detailsTmpl += '<ul><li class="retweet">RETWEETS <strong>' + d[8].qText + '</strong>';

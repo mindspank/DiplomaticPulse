@@ -134,7 +134,7 @@ function Filter(field, label, element, shouldsearch) {
        * If Filter should be searchable instanciate List.js
        */
       if(searchable) searchList();
-
+      $('div#search-nohits').hide()
       $('input.search').val('')
 
     });
