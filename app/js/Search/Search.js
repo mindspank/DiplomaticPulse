@@ -115,12 +115,18 @@ var Search = (function() {
      * Perform a Qlik Sense associative search scope to field teaser and respects currentselections in the data model
      */
     doSearch: function(term) {
-
-      var searchTerm = term.split(' ');
       
       var that = this;
+      
+      if ( term.split('')[0] !== '=' ) {
+
+      term = term.split(' ').map(function(d) { 
+        return '+' + d; 
+       }).join(' ').trim();       
+      }
+      
       this.listobject.getLayout().then(function() {
-        return that.listobject.searchListObjectFor('/qListObjectDef',searchTerm.map(function(d) { return '*' + d + '*'; }).join(' ').trim())
+        return that.listobject.searchListObjectFor('/qListObjectDef',term)
       })      
       .then(function() {
         return that.listobject.getListObjectData('/qListObjectDef',[{"qTop":0,"qLeft":0,"qWidth":1,"qHeight":10}]);
@@ -137,21 +143,6 @@ var Search = (function() {
         }
       });
       
-      /*
-      
-      this.q.searchAssociations({qSearchFields: [this.field], qContext: 'CurrentSelections'}, searchTerm, {qOffset: 0, qCount: 40}).then(function(results) {
-        console.log(results)
-      })
-      this.q.selectAssociations({qSearchFields: [this.field], qContext: 'CurrentSelections'}, searchTerm, 0).then(function(results) {
-        
-        //Perform a quick fade to notify the user that the UI has changed
-        $('#main').fadeTo(50,0.5).fadeTo(200,1);
-        
-        //Notify objects that they should update
-        pubsub.publish('update');
-      });
-      
-      */
       
     },
     /**
