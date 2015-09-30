@@ -1,4 +1,6 @@
 $('#filter-container').empty();
+$('#navigation li').removeClass('active');
+$('*[data-nav="trackinglist"]').addClass('active');
 
 /*
  * Set up Filters

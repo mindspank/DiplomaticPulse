@@ -139,6 +139,22 @@ body {
           margin-right: 10px;
           flex: 1 1 450px;
           
+          &.about {
+            min-height: 170px;
+            
+            @media @tablet {
+              display: none;
+            }
+            
+            .part-of-part {
+              p {
+                padding: 10px 0;
+                margin: 0;
+              }
+            }
+            
+          }
+          
           &.linechart {
             min-height: 200px;
           }

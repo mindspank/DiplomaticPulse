@@ -473,9 +473,7 @@ body {
     position: absolute;
     min-width: 200px;
     margin: 0;
-  }
-  #sidebar.show {
-    display: inline;
+    height: 100%;
   }
 }
 #sidebar .heading {
@@ -744,6 +742,18 @@ body {
   -webkit-flex: 1 1 450px;
       -ms-flex: 1 1 450px;
           flex: 1 1 450px;
+}
+#content #main .section-right .part.about {
+  min-height: 170px;
+}
+@media only screen and (max-width: 1000px) {
+  #content #main .section-right .part.about {
+    display: none;
+  }
+}
+#content #main .section-right .part.about .part-of-part p {
+  padding: 10px 0;
+  margin: 0;
 }
 #content #main .section-right .part.linechart {
   min-height: 200px;
