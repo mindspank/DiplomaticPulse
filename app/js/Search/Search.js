@@ -243,6 +243,9 @@ var Search = (function() {
         },
         qSelectionObjectDef: {},
         qListObjectDef: {
+          qAutoSortByState: {
+            qDisplayNumberOfRows: 1
+          },
           qLibraryId: "",
           qShowAlternatives: false,
           count: {
