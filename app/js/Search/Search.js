@@ -127,8 +127,13 @@ var Search = (function() {
         return '+' + d; 
        }).join(' ').trim();       
       }
-
-      that.listobject.searchListObjectFor('/qListObjectDef',term)   
+      
+      this.q.getField(this.field).then(function(field) {
+        return field.clear();
+      })
+      .then(function() {
+        return that.listobject.searchListObjectFor('/qListObjectDef',term)
+      })   
       .then(function() {
         return that.listobject.getListObjectData('/qListObjectDef',[{"qTop":0,"qLeft":0,"qWidth":1,"qHeight":1000}]);
       })
