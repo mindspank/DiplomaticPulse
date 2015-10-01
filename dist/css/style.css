@@ -658,6 +658,19 @@ body {
 #content #search-nohits span {
   text-decoration: underline;
 }
+#content #search-nohits-filter {
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  background-image: linear-gradient(top, #ffffff, rgba(255, 255, 255, 0.95));
+  background-image: -webkit-linear-gradient(top, #ffffff, rgba(255, 255, 255, 0.95));
+  font-size: 18px;
+  z-index: 1000;
+  padding: 40px;
+}
+#content #search-nohits-filter span {
+  text-decoration: underline;
+}
 #content #search {
   -webkit-flex: 0 0 50px;
       -ms-flex: 0 0 50px;

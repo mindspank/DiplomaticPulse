@@ -33,7 +33,7 @@ function UNFilter(container) {
       
       d[item.id] = d[item.id] || {};
       
-      var tmpl = '<div id="' + item.id.replace(/\s+/g, '').replace(/\./g, '') + '" class="filter">';
+      var tmpl = '<div id="' + item.id.replace(/\s+/g, '').replace(/\./g, '') + '" data-field="[Entity Name]" class="filter">';
       tmpl += '<div class="title">' + item.label;
       tmpl += '  <div class="right"><div class="count" style="visibility: hidden;"></div><img src="static/img/toggle.svg"></div>';
       tmpl += '</div>';

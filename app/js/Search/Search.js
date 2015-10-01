@@ -114,6 +114,9 @@ var Search = (function() {
     /**
      * Perform a Qlik Sense associative search scope to field teaser and respects currentselections in the data model
      */
+    lockFields: function() {
+      
+    },
     doSearch: function(term) {
       
       var that = this;
@@ -124,22 +127,37 @@ var Search = (function() {
         return '+' + d; 
        }).join(' ').trim();       
       }
-      
-      this.listobject.getLayout().then(function() {
-        return that.listobject.searchListObjectFor('/qListObjectDef',term)
-      })      
+
+      that.listobject.searchListObjectFor('/qListObjectDef',term)   
       .then(function() {
-        return that.listobject.getListObjectData('/qListObjectDef',[{"qTop":0,"qLeft":0,"qWidth":1,"qHeight":10}]);
+        return that.listobject.getListObjectData('/qListObjectDef',[{"qTop":0,"qLeft":0,"qWidth":1,"qHeight":1000}]);
       })
       .then(function(data) {
+        if ( data[0].qMatrix.length === 0 ) {
+          
+          that.listobject.abortListObjectSearch('/qListObjectDef').then(function() {
+            pubsub.publish('nodata');
+          })
 
-        if (data[0].qMatrix.length === 0) {
-          pubsub.publish('nodata');
-        } else {                          
-          that.listobject.acceptListObjectSearch('/qListObjectDef', false).then(function() {
-            $('#main').fadeTo(50,0.5).fadeTo(200,1);
-            pubsub.publish('update');
-          });      
+        } else {
+
+          that.listobject.getLayout().then(function(layout) {
+            if( layout.qListObject.qDataPages[0].qMatrix[0][0].qState === 'O' ) {
+            
+              that.listobject.acceptListObjectSearch('/qListObjectDef', false).then(function() {
+                $('#main').fadeTo(50,0.5).fadeTo(200,1);
+                pubsub.publish('update');
+              });
+            
+            } else {
+              
+              that.listobject.abortListObjectSearch('/qListObjectDef').then(function() {
+                pubsub.publish('nodata', true);
+              });
+            
+            }
+          })
+                                    
         }
       });
       
@@ -173,11 +191,32 @@ var Search = (function() {
           });
       });
     },
-    nodata: function() {
-      
-      $('#search-nohits').find('span').text( $('#qv-search').val() );
-      $('#search-nohits').show();
-      
+    clearFilters: function() {
+      this.q.clearAll().then(function() {
+        document.getElementById('search-nohits-filter').style.display = 'none'
+        this.doSearch(document.getElementById('qv-search').value)
+      }.bind(this))
+    },
+    nodata: function(topic, clear) {
+      if (clear) {
+        var $filter = $('#search-nohits-filter');
+        
+        $filter.css('width', $('#content').width() )
+        .find('span')
+          .text( $('#qv-search').val() );
+            
+        $filter.show(); 
+               
+      } else {
+        var $nohits = $('#search-nohits');
+        
+        $nohits.css('width', $('#content').width() )
+        .find('span')
+          .text( $('#qv-search').val() );
+            
+        $nohits.show();
+         
+      }
     },
     /**
      * Initialize Search
@@ -196,15 +235,23 @@ var Search = (function() {
         qListObjectDef: {
           qLibraryId: "",
           qShowAlternatives: false,
+          count: {
+            qValueExpression: "=Count(teaser)",
+          },
           qDef: {
             qFieldDefs: ['teaser']
-          },
-        qInitialDataFetch: [{
-          "qTop": 0,
-          "qHeight": 300,
-          "qLeft": 0,
-          "qWidth": 1
-        }]
+          },          
+          qSortCriterias: [
+            {
+              "qSortByState": 1
+            }
+          ],
+          qInitialDataFetch: [{
+            "qTop": 0,
+            "qHeight": 30,
+            "qLeft": 0,
+            "qWidth": 1
+          }]
         }
       }).then(function(handle) {
         that.listobject = handle;
@@ -215,6 +262,11 @@ var Search = (function() {
       var clearbutton = document.getElementById('qv-search-clear');
       clearbutton.addEventListener('click', function() {
         this.clear();
+      }.bind(this), false);
+      
+      var clearinlinebutton = document.getElementById('inline-filter-clear');
+      clearinlinebutton.addEventListener('click', function() {
+        this.clearFilters();
       }.bind(this), false);
       
       pubsub.subscribe('nodata', that.nodata);

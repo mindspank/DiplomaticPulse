@@ -29,7 +29,7 @@ function Filter(field, label, element, shouldsearch) {
   /**
    * Filter HTML template
    */
-  var tmpl = '<div id="' + labeltrim + '" class="filter">';
+  var tmpl = '<div id="' + labeltrim + '" data-field="' + field + '" class="filter">';
   tmpl += '<div class="title">' + label;
   tmpl += '  <div class="right"><div class="count"></div><img src="static/img/toggle.svg"></div>';
   tmpl += '</div>';
