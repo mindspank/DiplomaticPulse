@@ -277,6 +277,11 @@ var Search = (function() {
         this.clear();
       }.bind(this), false);
       
+      var clearsearchinlinebutton = document.getElementById('inline-clear');
+      clearsearchinlinebutton.addEventListener('click', function() {
+        this.clear();
+      }.bind(this), false);
+      
       var clearinlinebutton = document.getElementById('inline-filter-clear');
       clearinlinebutton.addEventListener('click', function() {
         this.clearFilters();
