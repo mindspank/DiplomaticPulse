@@ -181,7 +181,8 @@ var Search = (function() {
       this.q.getField(this.field).then(function(f) { 
           f.clear().then(function() {
             input.value = '';
-            $('#search-nohits').hide();
+            document.getElementById('search-nohits-filter').style.display = 'none';
+            document.getElementById('search-nohits').style.display = 'none';
             
             //Perform a quick fade to notify the user that the UI has changed
             $('#main').fadeTo(50,0.5).fadeTo(200,1);
@@ -217,6 +218,10 @@ var Search = (function() {
         $nohits.show();
          
       }
+    },
+    hidePanels: function() {
+      $('#search-nohits').hide()
+      $('#search-nohits-filter').hide()
     },
     /**
      * Initialize Search
@@ -270,6 +275,7 @@ var Search = (function() {
       }.bind(this), false);
       
       pubsub.subscribe('nodata', that.nodata);
+      pubsub.subscribe('update', that.hidePanels);
       
     }
   };
