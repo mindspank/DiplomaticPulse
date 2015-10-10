@@ -332,6 +332,11 @@ body {
   margin-top: -70px;
   height: 270px;
 }
+@media screen and (max-height: 750px) {
+  #intro .intro-modal .content .content-assets {
+    display: none;
+  }
+}
 #intro .intro-modal .content .content-assets .fa {
   float: left;
   margin: 0 20px;
