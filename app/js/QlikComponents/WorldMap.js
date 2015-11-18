@@ -41,7 +41,7 @@ function WorldMap(dimensions, expression, element) {
 
 	svg.call(tip)
 
-	d3.json("/static/data/world.geo.json", function(error, world) {
+	d3.json("./static/data/world.geo.json", function(error, world) {
 		if (error) return console.error(error);
 
 		geo = world;
