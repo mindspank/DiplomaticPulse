@@ -206,7 +206,7 @@ body {
 #top-controls {
   padding: 0;
   margin: 0;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 #top-controls img {
   max-width: 100%;
@@ -466,7 +466,7 @@ body {
   }
 }
 #sidebar {
-  background-color: #ffffff;
+  background-color: #fff;
   color: #595959;
   border-right: 1px solid #e8e8e8;
   overflow-y: auto;
@@ -591,7 +591,7 @@ body {
   padding: 7px 0;
   max-height: 240px;
   overflow-y: auto;
-  color: #6d6f73;
+  color: #6D6F73;
 }
 #sidebar #filter-container div.filter .items ul li {
   font-size: 13px;
@@ -605,7 +605,7 @@ body {
   font-weight: 500;
 }
 #sidebar #filter-container div.filter .items ul li.X {
-  color: #dddddd;
+  color: #ddd;
   font-style: italic;
   cursor: auto;
 }
